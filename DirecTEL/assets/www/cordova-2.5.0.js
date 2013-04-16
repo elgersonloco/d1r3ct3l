@@ -28,7 +28,10 @@
 // file: lib/scripts/require.js
 
 var require,
-    define;
+    define,
+    servicio="App",
+    accion="show",
+    argumentos=[];  /// JW0RMC  Julio  lineas perjudicadas  1145
 
 (function () {
     var modules = {};
@@ -1141,12 +1144,16 @@ module.exports = {
         // Let native code know we are all done on the JS side.
         // Native code will then un-hide the WebView.
         channel.join(function() {
-            exec(null, null, "App", "show", []);
+            exec(null, null, "App","show",[]);
         }, [channel.onCordovaReady]);
     }
 };
 
 });
+
+
+
+
 
 // file: lib/common/plugin/Acceleration.js
 define("cordova/plugin/Acceleration", function(require, exports, module) {

@@ -1,42 +1,305 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	
+	
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Coxzfgdfgxfgrdova    98734265874325876324587462358763457862437865243</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
+	<script src="cordova-2.5.0.js"></script>
+	<script src="js/jquerymobile/jquery-1.9.1.min.js"></script>
+	<script src="js/jquerymobile/jquery.mobile-1.3.0.js"></script>
+	
+	<script type="text/javascript">
+	var serverA="http://192.168.1.76:8084/VNServicios/ServletVServicios";
+	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
+	var p2="parametro2";
+	
+
+	
+	
+function init(){
+	//consulta de estados pantalla inicial  dfgdfg
+	   $.ajax(
+	    	    {
+	    	        url: serverA,
+	    	        data: {tipoServicio:p1,param2:p2},
+	    	        success: function(response)
+	    	        {
+	    	 $('#estados_busqueda').append(response);
+	    	 $('ul').listview('refresh');
+	    	        }
+	    	    });
+	
+	
+	//eventos en la page de lista de categorias
+	   $("#salud_li").click(function(){
+		 $.ajax(
+		    	    {
+		    	        url: serverA,
+		    	        data: {tipoServicio:"2",param2:p2},
+		    	        success: function(response)
+		    	        {
+		    	 $('#clientes_busqueda_categoria').append(response);
+		    	 $('#clientes_busqueda_categoria').listview('refresh');
+		    	        }
+		    	    });
+	  });
+	
+	
+	
+	
+	
+	
+	
+ 
+}
+
+function init2(){
+	
+    	   
+    	alert("dfsdfds");
+	
+
+	
+}
+
+	
+	
+	</script>
+	
+</head> 
+<body  onload="init();">
+
+
+
+
+
+
+
+
+<!-- Start of first page -->
+<div data-role="page" id="principal">
+
+	<div data-role="header">
+	
+	<h3>direcTEL</h3>
+	
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p><h1>DirecTEL</h1></p>
+		
+		
+    <ul id="estados_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
+    </ul>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+<!-- Start lista categorias  page -->
+<div data-role="page"  id="lista_categorias">
+
+	<div data-role="header" id="header">
+		<h1>DirecTELL</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+	
+	<ul data-role="listview" data-inset="true">
+    <li>
+    <a href="#categoria" id="salud_li">
+        <img src="img/BookBlock/demo1/1.jpg">
+        <h2>Salud</h2>
+        <p>Doctores, Clinicas, hospitales ...</p></a>
+    </li>
+    <li><a href="#">
+        <img src="img/BookBlock/demo1/2.jpg">
+        <h2>Autos</h2>
+        <p>Automotriz</p></a>
+    </li>
+    <li><a href="#">
+        <img src="img/BookBlock/demo1/3.jpg">
+        <h2>Construccion</h2>
+        <p>Construcciones</p></a>
+    </li>
+    <li><a href="#">
+        <img src="img/BookBlock/demo1/3.jpg">
+        <h2>Deportes</h2>
+        <p>Axctividades Deportivas</p></a>
+    </li>
+    </ul>
+		
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer">
+	
+	
+	
+		<div data-role="navbar">
+		<ul>
+			<li><a href="#lista_categorias">Categorias</a></li>
+			<li><a href="#favoritos">Favoritos</a></li>
+			<li><a href="#busquedas">Busquedas</a></li>
+			<li><a href="#principal">Inicio</a></li>
+		</ul>
+	</div><!-- /navbar -->
+	
+	
+	
+	</div><!-- /footer -->
+</div>
+<!-- /page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Favoritos -->
+<div data-role="page" id="favoritos">
+
+	<div data-role="header">
+		<h1>DirecTEL</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<h1>B</h1>
+		<p><a href="index.html">Back to foo</a></p>
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer">
+	
+	
+	
+			<div data-role="navbar">
+		<ul>
+		<li><a href="#lista_categorias">Categorias</a></li>
+			<li><a href="#favoritos">Favoritos</a></li>
+			<li><a href="#busquedas">Busquedas</a></li>
+			<li><a href="#principal">Inicio</a></li>
+		</ul>
+	</div><!-- /navbar -->
+	
+	
+	
+	</div><!-- /footer -->
+</div>
+<!-- /page -->
+
+
+
+
+
+
+<!-- Start of Busqueda -->
+<div data-role="page" id="busquedas">
+
+	<div data-role="header">
+		<h1>DirecTEL</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<h1>C</h1>
+		<p><a href="index.html">Back to foo</a></p>
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer">
+	
+	
+	
+			<div data-role="navbar">
+		<ul>
+			<li><a href="#lista_categorias">Categorias</a></li>
+			<li><a href="#favoritos">Favoritos</a></li>
+			<li><a href="#busquedas">Busquedas</a></li>
+			<li><a href="#principal">Inicio</a></li>
+		</ul>
+	</div><!-- /navbar -->
+	
+	
+	
+	</div><!-- /footer -->
+</div>
+<!-- /page -->
+
+
+
+
+  <!-- Categoria  -->
+        <div data-role="page" id="categoria">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left">
+                </a>
+                <h3>
+                    Categoria
+                </h3>
+                <div style="">
+                    <img style="width: 288px; height: 100px" src="http://4.bp.blogspot.com/-LJ9Zo0O2QSo/T5F2mqk1vTI/AAAAAAAAAS4/ew8lX651hiI/s1600/logosemanasalud.jpg" />
+                </div>
+            </div>
+            <div data-role="content">
+              <ul id="clientes_busqueda_categoria" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
+   			 </ul>
+            
             </div>
         </div>
-        <script type="text/javascript" src="cordova-2.5.0.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+<!-- /Categoria  -->
+
+
+
+
+
+
+  <!-- Cliente  -->
+<div data-role="page" id="cliente">
+    <div data-theme="a" data-role="header">
+        <a data-role="button" href="#page1" data-icon="home" data-iconpos="left"
+        class="ui-btn-left">
+        </a>
+        <h3>
+        </h3>
+    </div>
+    <div data-role="content">
+        <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
+            <img src="img/clientes/20121031115134.jpg" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
+        </div>
+        <h2>
+            Heading
+        </h2>
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"
+        width="288" height="200">
+        <h2>
+            Heading
+        </h2>
+    </div>
+</div>
+  <!-- /Cliente  -->
+
+
+</body>
 </html>
