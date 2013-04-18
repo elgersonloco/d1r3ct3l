@@ -17,7 +17,7 @@
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	
-
+// <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"  width="288" height="200"/>
 	
 	
 function init(){
@@ -48,7 +48,6 @@ function init(){
       	
 		    	 $('#clientes_busqueda_categoria').append(response);
 		    	 $('#clientes_busqueda_categoria').listview('refresh');
-		    	 
 		    	 eventosDinamicos();
 		    	 
 		    	        }
@@ -66,22 +65,39 @@ function eventosDinamicos()
 	
 	
 	
-	$("#20").click(function(){
-			
-		
-		
+	$("li").click(function(){
 		 $.ajax(
 		    	    {
 		    	        url: serverA,
-		    	        data: {tipoServicio:"3",param2:"20"},
+		    	        data: {tipoServicio:"3",param2:$('#'+this.id).attr("id")},
 		    	        success: function(response)
 		    	        {
 		    	        	
-		    	        	var datos=response.split(",");
+		    	        	var datos=response.split("*");
 		    	        	var nombre=datos[0];
 		    	        	var direccion=datos[1];
+		    	        	var geopos=datos[2];
+		    	        	var imagen=datos[3];//'<img src="http://localhost:8084/VNServicios/20121031115134.jpg" alt="image" style="position: absolute; top: 0%; left: 0%; margin-left: -16px; margin-top: -18px">';
+		    	        	
+		    	           	 $("#cliente_nombre b").remove();
+		    	        	 $("#cliente_direccion b").remove();
+		    	        	 $("#imagen_logo img").remove();
+		    	        	 
 		    	        	 $("#cliente_nombre").append(nombre);
 		    	        	 $("#cliente_direccion").append(direccion);
+		    	        	 $("#imagen_logo").append(imagen);
+		    	        	 
+							  /*
+							  tecnica de refresh para los mapas estaticos de google api  TECNICA !... problemas al cargar por segunda vez
+		    	        	  //var map = $('#geopos');
+		    	        	  //var cval = 'https://maps.googleapis.com/maps/api/staticmap?center=Brisbane&amp;zoom=14&amp;size=288x200&amp;markers=Brisbane&amp;sensor=false';
+							  //$(geopos).insertAfter( map );
+		    	        	  map.remove();*/
+		    	        	 
+		    	        	 
+		    	        	  $("h1 img").remove();
+		    	        	 $("h1").append(geopos);
+		    	        	  
 		    	 
 		    	        }
 		    	    });
@@ -302,14 +318,12 @@ function eventosDinamicos()
         </h3>
     </div>
     <div data-role="content">
-        <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
-            <img src="img/clientes/20121031115134.jpg" alt="image" style="position: absolute; top: 0%; left: 0%; margin-left: -16px; margin-top: -18px">
+        <div id="imagen_logo" style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
         </div>
         <h2 id="cliente_nombre"></h2>
         <h3>Direcición:</h3>
         <h4 id="cliente_direccion"></h4>
-        <h1> <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"
-        width="288" height="200"/> </h1>
+        <h1 id="geopos"></h1>
         
         <h2>
             Heading
