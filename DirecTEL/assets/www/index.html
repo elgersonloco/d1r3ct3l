@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
 	<script src="cordova-2.5.0.js"></script>
 	<script src="js/jquerymobile/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 	<script src="js/jquerymobile/jquery.mobile-1.3.0.js"></script>
 	
 	<script type="text/javascript">
@@ -65,7 +66,7 @@ function eventosDinamicos()
 	
 	
 	
-	$("li").click(function(){
+	$(".listadeclientes").click(function(){
 		 $.ajax(
 		    	    {
 		    	        url: serverA,
@@ -78,26 +79,33 @@ function eventosDinamicos()
 		    	        	var direccion=datos[1];
 		    	        	var geopos=datos[2];
 		    	        	var imagen=datos[3];//'<img src="http://localhost:8084/VNServicios/20121031115134.jpg" alt="image" style="position: absolute; top: 0%; left: 0%; margin-left: -16px; margin-top: -18px">';
+		    	        	var tel_local=datos[4];
+		    	        	
 		    	        	
 		    	           	 $("#cliente_nombre b").remove();
-		    	        	 $("#cliente_direccion b").remove();
+		    	        	 $("#cliente_direccion h5").remove();
+		    	        	 $("#cliente_telefono_local h5").remove();
+		    	        	 $("#tels li").remove();
 		    	        	 $("#imagen_logo img").remove();
+		    	        	 $("h1 img").remove();
 		    	        	 
 		    	        	 $("#cliente_nombre").append(nombre);
 		    	        	 $("#cliente_direccion").append(direccion);
+		    	        	 $("#cliente_telefono_local").append(tel_local);
+		    	        	 $("#tels").append('<li><a href="tel:4448492912">tel:4448492912</a></li>');
 		    	        	 $("#imagen_logo").append(imagen);
-		    	        	 
-							  /*
-							  tecnica de refresh para los mapas estaticos de google api  TECNICA !... problemas al cargar por segunda vez
-		    	        	  //var map = $('#geopos');
-		    	        	  //var cval = 'https://maps.googleapis.com/maps/api/staticmap?center=Brisbane&amp;zoom=14&amp;size=288x200&amp;markers=Brisbane&amp;sensor=false';
-							  //$(geopos).insertAfter( map );
-		    	        	  map.remove();*/
-		    	        	 
-		    	        	 
-		    	        	  $("h1 img").remove();
 		    	        	 $("h1").append(geopos);
+							
+		    	        	 
+		    	        	 
+		    	        	
 		    	        	  
+		    	        	 
+		    	        	 $("#cliente_nombre b").animate({
+		    	                 backgroundColor: "#fff",
+		    	                 color: "#000",
+		    	                 width: 240
+		    	               }, 1000 );
 		    	 
 		    	        }
 		    	    });
@@ -105,6 +113,26 @@ function eventosDinamicos()
 		
 		});
     
+}
+
+	
+	
+	
+//
+function onLoad() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// Cordova is loaded and it is now safe to make calls Cordova methods
+//
+function onDeviceReady() {
+    // Register the event listener
+    document.addEventListener("startcallbutton", onStartCallKeyDown, false);
+}
+
+// Handle the start call button
+//
+function onStartCallKeyDown() {
 }
 
 	
@@ -308,29 +336,36 @@ function eventosDinamicos()
 
 
 
-  <!-- Cliente  -->
+  <!-- Cliente 4448492912 -->
 <div data-role="page" id="cliente">
     <div data-theme="a" data-role="header">
-        <a data-role="button" href="#page1" data-icon="home" data-iconpos="left"
-        class="ui-btn-left">
-        </a>
-        <h3 id="header_cliente">antes d ela imagen
-        </h3>
+        <a data-role="button" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left"> </a>
+        <h5 id="cliente_nombre"></h5>
     </div>
     <div data-role="content">
-        <div id="imagen_logo" style="width: 400px; height: 400px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
-        </div>
-        <h2 id="cliente_nombre"></h2>
-        <h3>Direcición:</h3>
-        <h4 id="cliente_direccion"></h4>
-        <h1 id="geopos"></h1>
+    
+    
+        <div id="imagen_logo" style="width: 400px; height: 400px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"></div>
         
-        <h2>
-            Heading
-        </h2>
+    <ul data-role="listview" data-inset="true" data-divider-theme="d">
+    <li data-role="list-divider"> <h3>Direcicion:</h3></li>
+    <li id="cliente_direccion"></li>
+    <li data-role="list-divider"> <h3>Local:</h3></li>
+    <li id="cliente_telefono_local"></li>
+    <li><a href="tel:4448492912">tel:4448492912</a></li>
+    </ul>
+    <ul id="tels" sdata-role="listview" data-inset="true" data-divider-theme="c">
+    </ul>
+        
+        <h1 id="geopos"></h1>
+        <h2>heading</h2>
+        
+        
     </div>
 </div>
-  <!-- /Cliente  -->
+<!--  Cliente  -->
+
+
 
 
 </body>
