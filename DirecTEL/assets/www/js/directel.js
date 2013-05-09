@@ -141,4 +141,123 @@ function onDeviceReady() {
 }
 
 
+
+
+var iVar=1;
+var stri="";
+
+function preparaFavoritos(que){
+	if(que == 'read')
+	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+	else if(que == 'delete')
+		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+
+
+}
+
+function gotFS(fileSystem) {
+    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+}
+
+function gotFileEntry(fileEntry) {
+	//primero lo leemos
+    fileEntry.file(gotFile2,fail2);
+    //luego escribimos
+    fileEntry.createWriter(gotFileWriter, fail);
+}
+
+
+
+
+
+function gotFileWriter(writer) {
+    writer.onwriteend = function(evt) {
+    //aki pon quehacer despues de terminar el writtend
+    };
+    
+    iVar++;
+    writer.write(stri);
+    
+}
+
+
+
+function fail(error) {
+    alert(error.code);
+}
+
+
+
+
+
+
+//**************************reader
+
+
+
+function gotFS2(fileSystem) {
+    fileSystem.root.getFile("readme.txt", null, gotFileEntry2, fail2);
+}
+
+function gotFileEntry2(fileEntry) {
+    fileEntry.file(gotFile2, fail);
+}
+
+function gotFile2(file){
+    readAsText2(file);
+}
+
+function readDataUrl2(file) {
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+       alert("Read as data URL");
+        alert(evt.target.result);
+    };
+    reader.readAsDataURL(file);
+}
+
+function readAsText2(file) {
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+       alert("Read as text");
+       stri+=evt.target.result;
+        alert(stri);
+    };
+   reader.readAsText(file);
+   
+}
+
+function fail2(evt) {
+  alert(evt.target.error.code);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function sliderFavoritosEvnt(){
+	var val='off';
+	$('select#toggleFavorito').change(function() {
+	    if(val!==$(this).val()){
+	    		preparaFavoritos();
+	    		alert($(this).val());
+	    }
+	   		    val = $(this).val();
+	});
+}
+
 	
