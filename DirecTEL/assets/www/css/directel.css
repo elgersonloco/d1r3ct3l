@@ -1,0 +1,33 @@
+/*
+
+ */
+
+
+
+/*Header de la P‡gina inicial*/
+.main_header{
+	width:100%;
+	heigth:100%;
+}
+
+/*Logotipo de la P‡gina inical*/
+#main_header img{
+	display:block;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	
+	opacity:0.8;
+	-webkit-transition:all 0.8s ease;
+	-moz-transition:all 0.8s ease;
+	transition:all 0.8s ease;
+}
+
+/*Logotipo de la P‡gina inical al pasar el puntero sobre Žl*/
+#main_header img:hover{
+	opacity:1;
+	-webkit-transform: scale(1.05,1.05);
+	-moz-transform: scale(1.05,1.05);
+	transform: scale(1.05,1.05);
+}
+
