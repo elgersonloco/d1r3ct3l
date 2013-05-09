@@ -39,6 +39,7 @@
 function init(){
 
 	onLoad(); 
+	sliderFavoritosEvnt();
 	
 	
 	//consulta de estados pantalla inicial  dfgdfg
@@ -190,6 +191,19 @@ function onDeviceReady() {
 }
 
 
+
+function sliderFavoritosEvnt(){
+	var val='off';
+	$('select#toggleFavorito').change(function() {
+	    if(val!==$(this).val()){
+	        alert($(this).val());
+	    }
+	    val = $(this).val();
+	});
+	
+	
+	
+}
 	
 	</script>
 	
@@ -300,8 +314,10 @@ function onDeviceReady() {
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<h1>B</h1>
-		<p><a href="index.html">Back to foo</a></p>
+	
+	dfgdf
+	
+		
 	</div>
 	<!-- /content -->
 
@@ -391,10 +407,22 @@ function onDeviceReady() {
 <div data-role="page" id="cliente">
 
        <div  data-role="header">
-                <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left">
-                </a>
+                <a data-role="button" href="#principal" data-mini="false"  data-icon="home" data-iconpos="left" class="ui-btn-right"></a>
+                
+              <div data-role="fieldcontain">
+               <img  style="width: 48px; height: 48px" src="http://www.chathispano.es/imagenes/favoritos.png" />
+		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
+			                <option value="off">
+			                    No
+			                </option>
+			                <option value="on">
+			                    Si
+			                </option>
+           			 </select>
+      		  </div>
+                
                 <h3>
-                Cliente
+                Anuncio
                 </h3>
       </div>
       
