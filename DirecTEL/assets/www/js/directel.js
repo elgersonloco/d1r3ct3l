@@ -2,7 +2,7 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
-	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
+	var serverA="http://192.168.0.124:8084/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
@@ -13,6 +13,8 @@
 function init(){
 
 	onLoad(); 
+	sliderFavoritosEvnt();
+	
 	//consulta de estados pantalla inicial  dfgdfg
 	   $.ajax(
 	    	    {
@@ -131,13 +133,18 @@ function onLoad() {
 // Cordova is loaded and it is now safe to make calls Cordova methods
 //
 function onDeviceReady() {
-    // Register the event listener
-	 alert("Device Name:" + device.name + "\n"+
+    /*	
+     * 	Datos tecnicos del phone o tablet o ipad etc
+     *  Register the event listener
+	 		alert("Device Name:" + device.name + "\n"+
 		   "Device cordoba:" + device.cordova + "\n"+
 		   "Devicel platform:" + device.platform + "\n"+
 		   "Device uuid:" + device.uuid + "\n"+
 		   "Device model:" + device.model + "\n"+
-		   "Device version:" + device.version + "\n");
+		   "Device version:" + device.version + "\n");*/
+	
+	
+	 
 }
 
 
@@ -147,28 +154,47 @@ var iVar=1;
 var stri="";
 
 function preparaFavoritos(que){
-	if(que == 'read')
-	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-	else if(que == 'delete')
-		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-
+	if(que == 'read'){
+	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failReading);
+	}else if(que == 'remove'){
+		alert("deleting :) ojala funcione we");
+		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, removeFS, failRemoving);
+		}else if(que == 'write'){
+			alert("writting :) ojala funcione we");
+			 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, writeFS, failWritting);
+			}
 
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, failReading);
 }
+
+function writeFS(fileSystem) {
+    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, writeEntry, failWritting);
+}
+
+
+function removeFS(fileSystem){   
+	fileSystem.root.getFile("readme.txt", {create: false, exclusive: false}, removeEntry, failRemoving);
+}
+
+function removeEntry(fileEntry) {
+	//primero lo leemos
+    fileEntry.remove(success,failRemoving);
+}
+
 
 function gotFileEntry(fileEntry) {
 	//primero lo leemos
-    fileEntry.file(gotFile2,fail2);
-    //luego escribimos
-    fileEntry.createWriter(gotFileWriter, fail);
+    fileEntry.file(gotFile2,failReading);
 }
 
 
-
-
+function writeEntry(fileEntry){
+    //luego escribimos
+    fileEntry.createWriter(gotFileWriter, failWritting);
+}
 
 function gotFileWriter(writer) {
     writer.onwriteend = function(evt) {
@@ -176,44 +202,13 @@ function gotFileWriter(writer) {
     };
     
     iVar++;
-    writer.write(stri);
+    writer.write("writter stri + iVar++ =>> "+stri + iVar + "  dsjfbdshjfbjsdhfbkasjfbdksajhfbkdajshvjk ");
+    alert("se escribe" + +stri + iVar );
     
-}
-
-
-
-function fail(error) {
-    alert(error.code);
-}
-
-
-
-
-
-
-//**************************reader
-
-
-
-function gotFS2(fileSystem) {
-    fileSystem.root.getFile("readme.txt", null, gotFileEntry2, fail2);
-}
-
-function gotFileEntry2(fileEntry) {
-    fileEntry.file(gotFile2, fail);
 }
 
 function gotFile2(file){
     readAsText2(file);
-}
-
-function readDataUrl2(file) {
-    var reader = new FileReader();
-    reader.onloadend = function(evt) {
-       alert("Read as data URL");
-        alert(evt.target.result);
-    };
-    reader.readAsDataURL(file);
 }
 
 function readAsText2(file) {
@@ -221,29 +216,29 @@ function readAsText2(file) {
     reader.onloadend = function(evt) {
        alert("Read as text");
        stri+=evt.target.result;
-        alert(stri);
+        alert("stri=> " + stri);
     };
    reader.readAsText(file);
    
 }
 
-function fail2(evt) {
-  alert(evt.target.error.code);
+
+
+function success(entry){
+alert("accion correcta");	
 }
 
+function fail(error){
+	alert(error.code);	
+	}
 
+function failReading(evt) {
+  alert("error removing directory " + error.code);
+}
 
-
-
-
-
-
-
-
-
-
-
-
+function failWritting(error) {
+    alert(error.code);
+}
 
 
 
@@ -252,8 +247,8 @@ function fail2(evt) {
 function sliderFavoritosEvnt(){
 	var val='off';
 	$('select#toggleFavorito').change(function() {
-	    if(val!==$(this).val()){
-	    		preparaFavoritos();
+	    if(val!=$(this).val()){
+	    		preparaFavoritos('read');
 	    		alert($(this).val());
 	    }
 	   		    val = $(this).val();
