@@ -3,8 +3,8 @@
 <head> 
 	<title>Directel</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	
-	
+
+
 	<link rel="stylesheet" href="css/themes/V.min.css" />
 	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" /> <!--  Para que pongas tus temas -->
 	<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" /> <!--original -->
@@ -12,36 +12,36 @@
 	<script src="js/jquerymobile/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 	<script src="js/jquerymobile/jquery.mobile-1.3.0.js"></script>
-	
-	
+
+
 	<style type="text/css">
-	
+
 	IMG.displayed {
 	display: block;
 	margin-left: auto;
 	margin-right: auto 
 				  }
-	
-	
+
+
 	</style>
-	
-	
+
+
 	<script type="text/javascript">
 	//var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
 	var serverA="http://192.168.1.100:8084/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
-	
+
 // <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"  width="288" height="200"/>
-	
-	
+
+
 function init(){
 
 	onLoad(); 
 	sliderFavoritosEvnt();
-	
-	
+
+
 	//consulta de estados pantalla inicial  dfgdfg
 	   $.ajax(
 	    	    {
@@ -51,66 +51,66 @@ function init(){
 	    	        {
 	    	 $('#estados_busqueda').append(response);
 	    	 $('ul').listview('refresh');
-	    	 
-	    	 
-	    	 
-	    	 
+
+
+
+
 	    	        }
 	    	    });
-	
+
 	 //eventos en la page de lista de categorias
 	   $(".categoria").click(function(){
-		
+
 		    	 			p2=$('#'+this.id).attr("id");
-		    	     
+
 		    	        	 $.ajax(
 		    	 		    	    {
 		    	 		    	        url: serverA,
 		    	 		    	        data: {tipoServicio:"2",anyparam:p2,displaysize:""},
 		    	 		    	        success: function(response)
 		    	 		    	        {
-		    	       			 
+
 		    	 		    	 $('#clientes_busqueda_categoria li').remove();
 		    	 		    	 $('#clientes_busqueda_categoria').append(response);
 		    	 		    	 $('#clientes_busqueda_categoria').listview('refresh');
 		    	 		    	 eventosDinamicosAnuncios();
-		    	 		    	 
 
-		    	 		    	
-		    	 		    	 
+
+
+
 		    	 		    	        }
 		    	 		    	    });
-		    	        	
-		    	        	
-		    	        	
+
+
+
 	  	});
-	
-	
+
+
 }
 
 
 function eventosDinamicosAnuncios()
 {
-	
-	
-	
+
+
+
 	$(".listadeclientes").click(function(){
-		
-		
+
+
 		xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
 		ysize=$(window).height();  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
-		
+
 		 $.ajax(
-				 
+
 		    	    {
 		    	        url: serverA,
 		    	        data: {tipoServicio:"3",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		    	        success: function(response)
 		    	        {
-		    	        	
-		    	        
-		    	        	
-		    	        	
+
+
+
+
 		    	        	var datos=response.split("|");
 		    	        	var nombre=datos[0];
 		    	        	var direccion=datos[1];
@@ -120,7 +120,7 @@ function eventosDinamicosAnuncios()
 		    	        	var horario=datos[5];
 		    	        	var descripcion=datos[6];
 		    	        	var webs=datos[7];
-		    	        	
+
 		    	           	 $("#cliente_nombre b").remove();
 		    	        	 $("#cliente_direccion h5").remove();
 		    	        	 $("#tels li").remove();
@@ -130,10 +130,10 @@ function eventosDinamicosAnuncios()
 		    	        	 $("#cliente_webs li").remove();
 		    	        	 $("#cliente_descripcion a").remove();
 		    	        	 $("#descripcion div").remove();
-		    	        	 
-		    	        	 
-		    	        	 
-		    	        	 
+
+
+
+
 		    	        	 $("#cliente_nombre").append(nombre);
 		    	        	 $("#cliente_direccion").append(direccion);
 		    	        	 $("#tels").append(tels);//tel_local);
@@ -142,37 +142,37 @@ function eventosDinamicosAnuncios()
 		    	        	 $("#geopos").append(geopos);
 		    	        	 $("#descripcion").append(descripcion);
 		    	        	 $("#cliente_webs").append(webs);
-							
-		    	        	 
-		    	        	 
-		    	        		
-		    	        		
-		    	        	  
-		    	        	 
+
+
+
+
+
+
+
 		    	        	 $("#cliente_nombre b").animate({
 		    	                 color: "#fff",
 		    	                 width: 240
 		    	               }, 1000 );
-		    	        	 
+
 		    	        	 $(".linkses a").animate({
 		    	                 color: "#fff",
 		    	                 width: 240
 		    	               }, 1000 );
-		    	        	 
-		    	      
-		    	        	 
-		    	 
+
+
+
+
 		    	        }
 		    	    });
-		
-		
+
+
 		});
     
 }
 
-	
-	
-	
+
+
+
 //
 function onLoad() {
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -189,8 +189,8 @@ function onDeviceReady() {
 		   "Device model:" + device.model + "\n"+
 		   "Device version:" + device.version + "\n");
     
-	
-	 
+
+
 }
 
 
@@ -202,8 +202,8 @@ function preparaFavoritos(que){
 	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 	else if(que == 'delete')
 		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-		
-	 
+
+
 }
 
 function gotFS(fileSystem) {
@@ -310,9 +310,9 @@ function sliderFavoritosEvnt(){
 	   		    val = $(this).val();
 	});
 }
-	
+
 	</script>
-	
+
 </head> 
 <body  onload="init();">
 
@@ -327,10 +327,10 @@ function sliderFavoritosEvnt(){
 <div data-role="page" id="principal">
 
 	<div data-role="header">
-	
+
 	<h3><img class="displayed" src="img/dt1.png" width="400" height="200">
 		    	     </h3>
-	
+
 	<!-- temporal aki pero ira en la vista anuncio -->
 	    <div data-role="fieldcontain">
                <img  style="width: 48px; height: 48px" src="img/favoritos.png" />
@@ -375,8 +375,8 @@ function sliderFavoritosEvnt(){
 	</div><!-- /header -->
 
 	<div data-role="content">
-	
-	
+
+
 	<ul data-role="listview" data-inset="true">
     <li>
     <a href="#categoria" id="doctores"  class="categoria">
@@ -400,14 +400,14 @@ function sliderFavoritosEvnt(){
         <p>Axctividades Deportivas</p></a>
     </li>
     </ul>
-		
+
 	</div>
 	<!-- /content -->
 
 	<div data-role="footer">
-	
-	
-	
+
+
+
 		<div data-role="navbar">
 		<ul>
 			<li><a href="#lista_categorias">Categorias</a></li>
@@ -416,9 +416,9 @@ function sliderFavoritosEvnt(){
 			<li><a href="#principal">Inicio</a></li>
 		</ul>
 	</div><!-- /navbar -->
-	
-	
-	
+
+
+
 	</div><!-- /footer -->
 </div>
 <!-- /page -->
@@ -435,17 +435,17 @@ function sliderFavoritosEvnt(){
 	</div><!-- /header -->
 
 	<div data-role="content">
-	
+
 	dfgdf
-	
-		
+
+
 	</div>
 	<!-- /content -->
 
 	<div data-role="footer">
-	
-	
-	
+
+
+
 			<div data-role="navbar">
 		<ul>
 		<li><a href="#lista_categorias">Categorias</a></li>
@@ -454,9 +454,9 @@ function sliderFavoritosEvnt(){
 			<li><a href="#principal">Inicio</a></li>
 		</ul>
 	</div><!-- /navbar -->
-	
-	
-	
+
+
+
 	</div><!-- /footer -->
 </div>
 <!-- /page -->
@@ -480,9 +480,9 @@ function sliderFavoritosEvnt(){
 	<!-- /content -->
 
 	<div data-role="footer">
-	
-	
-	
+
+
+
 			<div data-role="navbar">
 		<ul>
 			<li><a href="#lista_categorias">Categorias</a></li>
@@ -491,9 +491,9 @@ function sliderFavoritosEvnt(){
 			<li><a href="#principal">Inicio</a></li>
 		</ul>
 	</div><!-- /navbar -->
-	
-	
-	
+
+
+
 	</div><!-- /footer -->
 </div>
 <!-- /page -->
