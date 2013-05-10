@@ -2,10 +2,12 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
-	var serverA="http://192.168.0.124:8084/VNServicios/ServletVServicios";
+	var serverA="http://192.168.1.100:8084/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
+	var stri="";
+	var anuncioActualId="";
 	
 // <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"  width="288" height="200"/>
 	
@@ -64,15 +66,14 @@ function eventosDinamicosAnuncios()
 		
 		xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
 		ysize=$(window).height();  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
-		
+		actualAnuncioId=$('#'+this.id).attr("id");  //atual id de cliente usado para la categorizacion de favoritos
 		 $.ajax(
-				 
+				 	
 		    	    {
 		    	        url: serverA,
 		    	        data: {tipoServicio:"3",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		    	        success: function(response)
 		    	        {
-
 		    	        	var datos=response.split("|");
 		    	        	var nombre=datos[0];
 		    	        	var direccion=datos[1];
@@ -144,21 +145,34 @@ function onDeviceReady() {
 		   "Device version:" + device.version + "\n");*/
 	
 	
+	   //window.localStorage.setItem("2323", "soy un valor pos see");
+       // keyname is now equal to "key"
+       var value = window.localStorage.clear(); //lo vacias siempre  solo por testing prac
+	
+       // localStorage is now empty
 	 
+}
+
+function addFavoritos(id){
+	window.localStorage.setItem(id, "soy un valor pos see");
+	var keyName = window.localStorage.getItem(id);
+}
+
+
+function removeFavoritos(id){
+	window.localStorage.removeItem(id);
 }
 
 
 
-
-var iVar=1;
-var stri="";
-
-function preparaFavoritos(que){
+// ************  READING WRITTTING ALSOOO REMOOUUUVVV   INICIOOOO
+/*
+function leerOEscribirORemover(que){
 	if(que == 'read'){
 	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failReading);
 	}else if(que == 'remove'){
 		alert("deleting :) ojala funcione we");
-		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, removeFS, failRemoving);
+		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, removeFS, fail);
 		}else if(que == 'write'){
 			alert("writting :) ojala funcione we");
 			 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, writeFS, failWritting);
@@ -176,12 +190,12 @@ function writeFS(fileSystem) {
 
 
 function removeFS(fileSystem){   
-	fileSystem.root.getFile("readme.txt", {create: false, exclusive: false}, removeEntry, failRemoving);
+	fileSystem.root.getFile("readme.txt", {create: false, exclusive: false}, removeEntry, fail);
 }
 
 function removeEntry(fileEntry) {
 	//primero lo leemos
-    fileEntry.remove(success,failRemoving);
+    fileEntry.remove(success,fail);
 }
 
 
@@ -201,9 +215,9 @@ function gotFileWriter(writer) {
     //aki pon quehacer despues de terminar el writtend
     };
     
-    iVar++;
-    writer.write("writter stri + iVar++ =>> "+stri + iVar + "  dsjfbdshjfbjsdhfbkasjfbdksajhfbkdajshvjk ");
-    alert("se escribe" + +stri + iVar );
+    
+    writer.write("escrito  stri =>> "+stri + "   ");
+    alert("se escribe" + +stri );
     
 }
 
@@ -214,8 +228,7 @@ function gotFile2(file){
 function readAsText2(file) {
     var reader = new FileReader();
     reader.onloadend = function(evt) {
-       alert("Read as text");
-       stri+=evt.target.result;
+       stri+="leido + anterior ->"+evt.target.result;
         alert("stri=> " + stri);
     };
    reader.readAsText(file);
@@ -239,7 +252,8 @@ function failReading(evt) {
 function failWritting(error) {
     alert(error.code);
 }
-
+*/
+//************READING WRITTTING ALSOOO REMOOUUUVVV   FINALLLLLLL
 
 
 
@@ -247,10 +261,16 @@ function failWritting(error) {
 function sliderFavoritosEvnt(){
 	var val='off';
 	$('select#toggleFavorito').change(function() {
-	    if(val!=$(this).val()){
-	    		preparaFavoritos('read');
-	    		alert($(this).val());
+	    if($(this).val() == 'on'){
+	    		addFavoritos(actualAnuncioId);
+	    		alert("agregado a favoritos !!!" + $(this).val());
+	    }else if($(this).val() == 'off'){
+    		removeFavoritos(actualAnuncioId);
+	    	alert("eliminado de   favoritos !!!" + $(this).val());
 	    }
+	    		
+	    	
+	    	
 	   		    val = $(this).val();
 	});
 }
