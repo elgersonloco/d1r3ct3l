@@ -2,10 +2,12 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
-	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
+	var serverA="http://192.168.1.100:8084/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
+	var stri="";
+	var anuncioActualId="";
 	
 // <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"  width="288" height="200"/>
 	
@@ -13,6 +15,8 @@
 function init(){
 
 	onLoad(); 
+	sliderFavoritosEvnt();
+	
 	//consulta de estados pantalla inicial  dfgdfg
 	   $.ajax(
 	    	    {
@@ -62,15 +66,14 @@ function eventosDinamicosAnuncios()
 		
 		xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
 		ysize=$(window).height();  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
-		
+		actualAnuncioId=$('#'+this.id).attr("id");  //atual id de cliente usado para la categorizacion de favoritos
 		 $.ajax(
-				 
+				 	
 		    	    {
 		    	        url: serverA,
 		    	        data: {tipoServicio:"3",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		    	        success: function(response)
 		    	        {
-
 		    	        	var datos=response.split("|");
 		    	        	var nombre=datos[0];
 		    	        	var direccion=datos[1];
@@ -131,129 +134,145 @@ function onLoad() {
 // Cordova is loaded and it is now safe to make calls Cordova methods
 //
 function onDeviceReady() {
-    // Register the event listener
-	 alert("Device Name:" + device.name + "\n"+
+    /*	
+     * 	Datos tecnicos del phone o tablet o ipad etc
+     *  Register the event listener
+	 		alert("Device Name:" + device.name + "\n"+
 		   "Device cordoba:" + device.cordova + "\n"+
 		   "Devicel platform:" + device.platform + "\n"+
 		   "Device uuid:" + device.uuid + "\n"+
 		   "Device model:" + device.model + "\n"+
-		   "Device version:" + device.version + "\n");
+		   "Device version:" + device.version + "\n");*/
+	
+	
+	   //window.localStorage.setItem("2323", "soy un valor pos see");
+       // keyname is now equal to "key"
+       var value = window.localStorage.clear(); //lo vacias siempre  solo por testing prac
+	
+       // localStorage is now empty
+	 
+}
+
+function addFavoritos(id){
+	window.localStorage.setItem(id, "soy un valor pos see");
+	var keyName = window.localStorage.getItem(id);
+}
+
+
+function removeFavoritos(id){
+	window.localStorage.removeItem(id);
 }
 
 
 
-
-var iVar=1;
-var stri="";
-
-function preparaFavoritos(que){
-	if(que == 'read')
-	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-	else if(que == 'delete')
-		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-
+// ************  READING WRITTTING ALSOOO REMOOUUUVVV   INICIOOOO
+/*
+function leerOEscribirORemover(que){
+	if(que == 'read'){
+	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failReading);
+	}else if(que == 'remove'){
+		alert("deleting :) ojala funcione we");
+		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, removeFS, fail);
+		}else if(que == 'write'){
+			alert("writting :) ojala funcione we");
+			 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, writeFS, failWritting);
+			}
 
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, failReading);
 }
+
+function writeFS(fileSystem) {
+    fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, writeEntry, failWritting);
+}
+
+
+function removeFS(fileSystem){   
+	fileSystem.root.getFile("readme.txt", {create: false, exclusive: false}, removeEntry, fail);
+}
+
+function removeEntry(fileEntry) {
+	//primero lo leemos
+    fileEntry.remove(success,fail);
+}
+
 
 function gotFileEntry(fileEntry) {
 	//primero lo leemos
-    fileEntry.file(gotFile2,fail2);
-    //luego escribimos
-    fileEntry.createWriter(gotFileWriter, fail);
+    fileEntry.file(gotFile2,failReading);
 }
 
 
-
-
+function writeEntry(fileEntry){
+    //luego escribimos
+    fileEntry.createWriter(gotFileWriter, failWritting);
+}
 
 function gotFileWriter(writer) {
     writer.onwriteend = function(evt) {
     //aki pon quehacer despues de terminar el writtend
     };
     
-    iVar++;
-    writer.write(stri);
     
-}
-
-
-
-function fail(error) {
-    alert(error.code);
-}
-
-
-
-
-
-
-//**************************reader
-
-
-
-function gotFS2(fileSystem) {
-    fileSystem.root.getFile("readme.txt", null, gotFileEntry2, fail2);
-}
-
-function gotFileEntry2(fileEntry) {
-    fileEntry.file(gotFile2, fail);
+    writer.write("escrito  stri =>> "+stri + "   ");
+    alert("se escribe" + +stri );
+    
 }
 
 function gotFile2(file){
     readAsText2(file);
 }
 
-function readDataUrl2(file) {
-    var reader = new FileReader();
-    reader.onloadend = function(evt) {
-       alert("Read as data URL");
-        alert(evt.target.result);
-    };
-    reader.readAsDataURL(file);
-}
-
 function readAsText2(file) {
     var reader = new FileReader();
     reader.onloadend = function(evt) {
-       alert("Read as text");
-       stri+=evt.target.result;
-        alert(stri);
+       stri+="leido + anterior ->"+evt.target.result;
+        alert("stri=> " + stri);
     };
    reader.readAsText(file);
    
 }
 
-function fail2(evt) {
-  alert(evt.target.error.code);
+
+
+function success(entry){
+alert("accion correcta");	
 }
+
+function fail(error){
+	alert(error.code);	
+	}
+
+function failReading(evt) {
+  alert("error removing directory " + error.code);
+}
+
+function failWritting(error) {
+    alert(error.code);
+}
+*/
+//************READING WRITTTING ALSOOO REMOOUUUVVV   FINALLLLLLL
+
 
 
 
 function sliderFavoritosEvnt(){
 	var val='off';
 	$('select#toggleFavorito').change(function() {
-	    if(val!==$(this).val()){
-	    		preparaFavoritos();
-	    		alert($(this).val());
+	    if($(this).val() == 'on'){
+	    		addFavoritos(actualAnuncioId);
+	    		alert("agregado a favoritos !!!" + $(this).val());
+	    }else if($(this).val() == 'off'){
+    		removeFavoritos(actualAnuncioId);
+	    	alert("eliminado de   favoritos !!!" + $(this).val());
 	    }
+	    		
+	    	
+	    	
 	   		    val = $(this).val();
 	});
-}
-
-
-/*Regresa el thema a usar en la app
-	a (black): high-level visual priority
-	b (blue): secondary level
-	c (gray): baseline
-	d (gray and white): alternate secondary level
-	e (yellow): accent
- **/
-function get_appTheme(){
-	return "b";
 }
 
 	
