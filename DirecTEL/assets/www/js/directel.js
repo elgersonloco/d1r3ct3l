@@ -2,7 +2,7 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
-	var serverA="http://192.168.1.100:8084/VNServicios/ServletVServicios";
+	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
@@ -154,8 +154,13 @@ function onDeviceReady() {
 }
 
 function addFavoritos(id){
-	window.localStorage.setItem(id, "soy un valor pos see");
+	window.localStorage.setItem(id, "favorito");
 	var keyName = window.localStorage.getItem(id);
+	var keyName2 = window.localStorage.getItem("28");
+
+	
+	alert("id27=" + keyName);
+	alert("id28" + keyName2)
 }
 
 
@@ -263,10 +268,10 @@ function sliderFavoritosEvnt(){
 	$('select#toggleFavorito').change(function() {
 	    if($(this).val() == 'on'){
 	    		addFavoritos(actualAnuncioId);
-	    		alert("agregado a favoritos !!!" + $(this).val());
+	    		alert("agregado a favoritos !!!" + actualAnuncioId);
 	    }else if($(this).val() == 'off'){
     		removeFavoritos(actualAnuncioId);
-	    	alert("eliminado de   favoritos !!!" + $(this).val());
+	    	alert("eliminado de   favoritos !!!" + actualAnuncioId);
 	    }
 	    		
 	    	
