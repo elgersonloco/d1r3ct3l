@@ -233,22 +233,6 @@ function fail2(evt) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function sliderFavoritosEvnt(){
 	var val='off';
 	$('select#toggleFavorito').change(function() {
@@ -258,6 +242,18 @@ function sliderFavoritosEvnt(){
 	    }
 	   		    val = $(this).val();
 	});
+}
+
+
+/*Regresa el thema a usar en la app
+	a (black): high-level visual priority
+	b (blue): secondary level
+	c (gray): baseline
+	d (gray and white): alternate secondary level
+	e (yellow): accent
+ **/
+function get_appTheme(){
+	return "b";
 }
 
 	
