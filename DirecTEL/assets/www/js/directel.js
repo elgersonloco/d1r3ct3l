@@ -2,7 +2,7 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
-	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
+	var serverA="http://192.168.0.124:8084/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
@@ -74,6 +74,19 @@ function eventosDinamicosAnuncios()
 		    	        data: {tipoServicio:"3",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		    	        success: function(response)
 		    	        {
+		    	        	
+		    	        	
+		    	        	if(null == window.localStorage.getItem(actualAnuncioId)){
+		    	        	alert("nulo");
+		    	        	 $('select#toggleFavorito').val('off');
+		    	        	}else{
+			    	         alert("nonulo");
+		    	             $('select#toggleFavorito').val('on');
+		    	        	}
+		    	        	
+		    	        	
+		    	        	
+		    	        	
 		    	        	var datos=response.split("|");
 		    	        	var nombre=datos[0];
 		    	        	var direccion=datos[1];
@@ -156,16 +169,30 @@ function onDeviceReady() {
 function addFavoritos(id){
 	window.localStorage.setItem(id, "favorito");
 	var keyName = window.localStorage.getItem(id);
-	var keyName2 = window.localStorage.getItem("28");
 
 	
-	alert("id27=" + keyName);
-	alert("id28" + keyName2)
+	
+	alert("sdfsd" + window.localStorage.length);
+	
+		for(var i=0;i<window.localStorage.length;i++){
+		if(null == keyName)
+		alert(" i" +i+"  id"+id+" is ->" + keyName);
+		else
+		alert("key i" +i+"  id"+id+" is ->" + keyName);
+	
+	}
+	
+		
+		
+	
+	
+	
 }
 
 
 function removeFavoritos(id){
 	window.localStorage.removeItem(id);
+	
 }
 
 
@@ -265,18 +292,17 @@ function failWritting(error) {
 
 function sliderFavoritosEvnt(){
 	var val='off';
+  
 	$('select#toggleFavorito').change(function() {
-	    if($(this).val() == 'on'){
+		 if($(this).val() == 'on'){
 	    		addFavoritos(actualAnuncioId);
-	    		alert("agregado a favoritos !!!" + actualAnuncioId);
 	    }else if($(this).val() == 'off'){
     		removeFavoritos(actualAnuncioId);
-	    	alert("eliminado de   favoritos !!!" + actualAnuncioId);
 	    }
 	    		
-	    	
-	    	
-	   		    val = $(this).val();
+	   		
+	   		     
+	   		     
 	});
 }
 
