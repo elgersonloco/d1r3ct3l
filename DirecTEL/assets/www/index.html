@@ -31,11 +31,10 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" />        reset.css file    : This file must be the first 'css' declared  (Reset default styles)-->
     <!-- <link rel="stylesheet" type="text/css" href="/css/normalize.css" />   normalize.css file: This file must be the first 'css' declared  (Normalize default styles)-->
     <!-- <link rel="stylesheet" type="text/css" href="/css/style.css" />       style.css file    : This file must be the second 'css' declared (Shared CSS).-->
-    <link rel="stylesheet" href="css/themes/V.min.css" />
-	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" /> <!--  Para que pongas tus temas -->
-	<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" /> <!--original -->
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
-	<link rel="stylesheet" type="text/css" href="css/directel.css" />
+    <!-- <link rel="stylesheet" href="css/themes/V.css" /> -->
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="css/directel.css" />
     
     <!-- ================ SCRIPTS ==================== -->
 	<script src="cordova-2.5.0.js"></script>
@@ -48,36 +47,42 @@
 
 <body  onload="init();">
 
-	<!-- ================ PÁGINA INICIAL ================= -->
-	<!-- Página Inicial -->
+	<!-- ================ PÁGINA INICIAL ================= 
+	<!-- Página Inicial 
 	<div data-role="page" id="principal">
-		<!-- ================ HEADER ================= -->
-		<div id="main_header" data-role="header">
-			<img src="css/images/logo_directel.png">
-		</div><!-- /header -->
+
 	
-		<!-- ================ CONTENT ================= -->
-		<div data-role="content">
-			<p><h1>DirecTEL</h1></p>
-	    <ul id="estados_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
-	    </ul>
+		<!-- ================ CONTENT ================= 
+		<div data-role="content" class="init_content" >
+			<img src="css/images/logo_directel_init.png"/>
+		    <ul id="estados_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
+		    </ul>
 		</div><!-- /content -->
-	
-		<!-- ================ FOOTER ================= -->
-		<div data-role="footer">
-			<h4>Page Footer</h4>
-		</div><!-- /footer -->
-	</div><!-- /page -->
+			
 	
 	
 	
 	<!-- ================ PÁGINA CATEGORÍAS ================= -->
 	<!-- Lista de Categorías  page -->
-	<div data-role="page"  id="lista_categorias">
+	<div data-role="page"  id="lista_categorias" data-theme="a">
 		<!-- ================ HEADER ================= -->
-		<div data-role="header" id="header">
-			<h1>DirecTELL</h1>
-		</div><!-- /header -->
+		<header data-role="header" class="header_" >
+			<img class="header_logo"   src="css/images/logo_directel.png">
+			<img class="header_config" src="css/images/config.png"/>
+		</header><!-- /header -->
+		
+		<!--  =============== MENU =================== -->
+		<nav data-role="navbar" class="menu_">
+				<ul>
+					<li><a href="#lista_categorias">
+						<img src="img/category.png"/></a></li>
+					<li><a href="#favoritos">
+						<img src="img/favorite.png"/></a></li>
+					<li><a href="#busquedas">
+						<img src="img/search.png"/></a></li>
+				</ul>
+		</nav><!-- /navbar -->
+		
 	
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
@@ -115,7 +120,7 @@
 					<li><a href="#busquedas">Busquedas</a></li>
 					<li><a href="#principal">Inicio</a></li>
 				</ul>
-			</div><!-- /navbar -->
+		</div><!-- /navbar -->
 		</div><!-- /footer -->
 	</div>
 	<!-- /page -->
@@ -202,6 +207,11 @@
 		  </ul>
         
         </div>
+        <!-- ================ FOOTER ================= -->
+		<div data-role="footer">
+			<h4>Page Footer</h4>
+		</div><!-- /footer -->
+	</div><!-- /page -->
     </div>
 	<!-- /Categoria  -->
 	
