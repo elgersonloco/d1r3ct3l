@@ -2,11 +2,7 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
-<<<<<<< HEAD
-	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
-=======
 	var serverA="http://192.168.0.124:8084/VNServicios/ServletVServicios";
->>>>>>> branch 'master' of https://github.com/jwormc/d1r3ct3l.git
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
@@ -19,7 +15,6 @@
 function init(){
 
 	onLoad(); 
-	sliderFavoritosEvnt();
 	
 	//consulta de estados pantalla inicial  dfgdfg
 	   $.ajax(
@@ -31,9 +26,7 @@ function init(){
 	    	 $('#estados_busqueda').append(response);
 	    	 $('ul').listview('refresh');
 	    	 
-	    	 
-	    	 
-	    	 
+	    	
 	    	        }
 	    	    });
 	
@@ -68,8 +61,6 @@ function eventosDinamicosAnuncios()
 	$(".listadeclientes").click(function(){
 		
 		
-		xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
-		ysize=$(window).height();  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
 		actualAnuncioId=$('#'+this.id).attr("id");  //atual id de cliente usado para la categorizacion de favoritos
 		 $.ajax(
 				 	
@@ -78,16 +69,19 @@ function eventosDinamicosAnuncios()
 		    	        data: {tipoServicio:"3",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		    	        success: function(response)
 		    	        {
+		    	       	 xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+		    	 		 ysize=$(window).height();  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+		    	 	
 		    	        	
-		    	        	
+		    	       
 		    	        	if(null == window.localStorage.getItem(actualAnuncioId)){
-		    	        	alert("nulo");
-		    	        	 $('select#toggleFavorito').val('off');
-		    	        	}else{
-			    	         alert("nonulo");
-		    	             $('select#toggleFavorito').val('on');
-		    	        	}
-		    	        	
+		    	        	 $('#favoritoSelect h2').remove();
+		    	        	 $('#favoritoSelect').append('<h2><select name="ToggleFavorito" id="toggleFavorito" class="favorClass" data-theme="a" data-role="slider"><option value="off">No</option><option value="on">Si</option></select></h2>');
+				    	  	}else{
+				    	    $('#favoritoSelect h2').remove();
+		    	        	 $('#favoritoSelect').append('<h2><select name="ToggleFavorito" id="toggleFavorito" class="favorClass" data-theme="a" data-role="slider"><option value="on">Si</option><option value="off">No</option></select></h2>');
+		  		    	       
+			    	    	}
 		    	        	
 		    	        	
 		    	        	
@@ -134,6 +128,9 @@ function eventosDinamicosAnuncios()
 		    	                 width: 240
 		    	               }, 1000 );
 
+		    	        	 
+		    	        	 
+		    	        	 sliderFavoritosEvnt();;
 		    	        }
 		    	    });
 
@@ -160,43 +157,18 @@ function onDeviceReady() {
 		   "Device uuid:" + device.uuid + "\n"+
 		   "Device model:" + device.model + "\n"+
 		   "Device version:" + device.version + "\n");*/
-	
-	
-	   //window.localStorage.setItem("2323", "soy un valor pos see");
-       // keyname is now equal to "key"
-       var value = window.localStorage.clear(); //lo vacias siempre  solo por testing prac
-	
-       // localStorage is now empty
-	 
+      // var value = window.localStorage.clear(); //  IMPORTANTE!! COMENTAR PARA PRODUCCION. PARA LA PERSISTENCIA DE DATOS NO NECESITAS LIMPIAR EL STORAGE
 }
 
 function addFavoritos(id){
 	window.localStorage.setItem(id, "favorito");
 	var keyName = window.localStorage.getItem(id);
-
-	
-	
-	alert("sdfsd" + window.localStorage.length);
-	
-		for(var i=0;i<window.localStorage.length;i++){
-		if(null == keyName)
-		alert(" i" +i+"  id"+id+" is ->" + keyName);
-		else
-		alert("key i" +i+"  id"+id+" is ->" + keyName);
-	
+	alert("lenght storage = " + window.localStorage.length);
 	}
 	
-		
-		
-	
-	
-	
-}
-
 
 function removeFavoritos(id){
 	window.localStorage.removeItem(id);
-	
 }
 
 
@@ -295,11 +267,10 @@ function failWritting(error) {
 
 
 function sliderFavoritosEvnt(){
-	var val='off';
   
-	$('select#toggleFavorito').change(function() {
+	$('.favorClass').change(function() {
 		 if($(this).val() == 'on'){
-	    		addFavoritos(actualAnuncioId);
+	    	addFavoritos(actualAnuncioId);
 	    }else if($(this).val() == 'off'){
     		removeFavoritos(actualAnuncioId);
 	    }
@@ -309,5 +280,52 @@ function sliderFavoritosEvnt(){
 	   		     
 	});
 }
+
+
+function cargaFavoritos(){
+	var favorsCadena="";
+	 xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+     ysize=$(window).height();  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+	
+	
+	for(var i=0;i<window.localStorage.length;i++){
+		if(i!=window.localStorage.length-1)
+		favorsCadena+=""+window.localStorage.key(i)+",";
+		else
+		favorsCadena+=""+window.localStorage.key(i);
+	}
+	
+	
+	alert("String favors -> " +  favorsCadena);
+	
+	
+	   $.ajax(
+	    	    {
+	    	        url: serverA,
+	    	        data: {tipoServicio:"4",anyparam:favorsCadena,displaysize:xsize + "x" + ysize},
+	    	        success: function(response)
+	    	        {
+	    	 
+	    	 $('#favoritos_busqueda li').remove();
+	    	 $('#favoritos_busqueda').append(response);
+	    	 $('#favoritos_busqueda').listview('refresh');
+	    	 
+	    	 
+	    	 
+	    	 eventosDinamicosAnuncios(); //para agregar aventos al igual que cuando consultas clientes por categoria
+	    	        }
+	    	    });
+	
+}
+
+
+
+
+
+
+
+
+
+
 
 	
