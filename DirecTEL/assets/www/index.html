@@ -75,7 +75,7 @@
 				<ul>
 					<li><a href="#lista_categorias">
 						<img src="img/category.png"/></a></li>
-					<li><a href="#favoritos">
+					<li><a href="#favoritos" onclick="cargaFavoritos();">
 						<img src="img/favorite.png"/></a></li>
 					<li><a href="#busquedas">
 						<img src="img/search.png"/></a></li>
@@ -196,8 +196,9 @@
 
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
-			<h1>B</h1>
-			<p><a href="index.html">Back to foo</a></p>
+			<h1>Favoritos</h1>
+			 <ul id="favoritos_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="busca Favorito..." data-inset="true">
+		    </ul>
 		</div>
 		<!-- /content -->
 	
@@ -229,7 +230,6 @@
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
 			<h1>C</h1>
-			<p><a href="index.html">Back to foo</a></p>
 		</div>
 		<!-- /content -->
 	
@@ -288,7 +288,8 @@
 	        
 	        
 	     <!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. -->
-	    <div data-role="fieldcontain">
+	    <div data-role="fieldcontain" id="favoritoSelect">
+	    		<h2>
 		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
 			                <option value="off">
 			                    No
@@ -297,8 +298,8 @@
 			                    Si
 			                </option>
            			 </select>
+	        </h2>
       		  </div>
-	        
 	        
 	        
 	        
