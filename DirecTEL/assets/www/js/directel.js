@@ -3,7 +3,7 @@
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
 
-	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
+	var serverA="http://192.168.0.124:8084/VNServicios/ServletVServicios";
 
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
@@ -400,6 +400,31 @@ function cargaFavoritos(){
 }
 
 
+
+function busqueda(){
+	 //eventos en la page de lista de categorias
+	 
+		   					
+			p2=$("#textABuscar").val();
+   	     
+       	 $.ajax(
+		    	    {
+		    	        url: serverA,
+		    	        data: {tipoServicio:"5",anyparam:p2,displaysize:""},
+		    	        success: function(response)
+		    	        {
+      			 
+		    	 $('#clientes_busqueda li').remove();
+		    	 $('#clientes_busqueda').append(response);
+		    	 $('#clientes_busqueda').listview('refresh');
+		    	 eventosDinamicosAnuncios();
+
+		    	        }
+		    	    });
+
+	  	
+	
+}
 
 
 
