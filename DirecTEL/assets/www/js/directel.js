@@ -2,12 +2,16 @@
  * 
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
+
 	var serverA="http://192.168.0.124:8084/VNServicios/ServletVServicios";
+
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
 	var stri="";
 	var anuncioActualId="";
+	
+	var categoria_actual="";     //Nombre de la Categora que se va a visualizar
 	
 // <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"  width="288" height="200"/>
 	
@@ -32,7 +36,12 @@ function init(){
 	
 	 //eventos en la page de lista de categorias
 	   $(".categoria").click(function(){
-		
+		   					
+		   					//Asigna el nombre de la Categoria que se va a visitar
+		   					categoria_actual=$('#'+this.id).attr("title");
+		   					put_catIcon();
+		   					
+		   					
 		    	 			p2=$('#'+this.id).attr("id");
 		    	     
 		    	        	 $.ajax(
@@ -82,7 +91,6 @@ function eventosDinamicosAnuncios()
 		    	        	 $('#favoritoSelect').append('<h2><select name="ToggleFavorito" id="toggleFavorito" class="favorClass" data-theme="a" data-role="slider"><option value="on">Si</option><option value="off">No</option></select></h2>');
 		  		    	       
 			    	    	}
-		    	        	
 		    	        	
 		    	        	
 		    	        	var datos=response.split("|");
@@ -285,6 +293,75 @@ function sliderFavoritosEvnt(){
 	});
 }
 
+<<<<<<< HEAD
+/********************************************************************
+ * put_catIcon : coloca la imagen que le corresponde a la Categora
+ * 
+ * @date    May 14th, 2013
+ * @author  Howser
+ * 
+ ********************************************************************/
+function put_catIcon(){
+	
+	//Coloca Imagenes
+	document.getElementById('cat_name').setAttribute('src', "img/cat/tag_" +categoria_actual+".png");
+	document.getElementById('cat_icon').setAttribute('src', "img/cat/logo_"+categoria_actual+".png");
+	
+	
+	//Coloca color de Fondo
+	var color="#ffffff";
+	
+	switch(categoria_actual){
+		case "apoyos_financieros":
+			  color = "#7f5e3f";
+			  break;
+		case "automotriz":
+			  color = "#a32431";
+			  break;
+		case "construccion":
+			  color = "#e9ae4a";
+			  break;
+		case "deportes":
+			  color = "#cf4239";
+			  break;
+		case "educacion":
+			  color = "#ca0088";
+			  break;
+		case "gobierno":
+			  color = "#7d2b8b";
+			  break;
+		case "hogar":
+			  color = "#9fc54d";
+			  break;
+		case "medios_imagen":
+			  color = "#39673e";
+			  break;
+		case "negocios_industria":
+			  color = "#6e6659";
+			  break;
+		case "oficinas":
+			  color = "#882461";
+			  break;
+		case "profesionistas_oficios":
+			  color = "#5aa69d";
+			  break;
+		case "recreacion_sociales":
+			  color = "#cc2229";
+			  break;
+		case "salud":
+			  color = "#00acec";
+			  break;
+			  
+		case "servicios_generales":
+			  color = "#f2ca3c";
+			  break;
+	}//switch
+	
+	document.getElementById('header_categoria').style.backgroundColor = color; 
+	
+	
+}//function put_catIcon
+
 
 function cargaFavoritos(){
 	var favorsCadena="";
@@ -321,9 +398,6 @@ function cargaFavoritos(){
 	    	    });
 	
 }
-
-
-
 
 
 

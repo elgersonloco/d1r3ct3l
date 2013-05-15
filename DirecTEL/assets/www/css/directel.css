@@ -38,7 +38,7 @@
 	width:50%;
 	
 	
-	opacity:0.8;
+	opacity:1;
 	-webkit-transition:all 0.8s ease;
 	-moz-transition:all 0.8s ease;
 	transition:all 0.8s ease;
@@ -63,9 +63,9 @@
 /*Logotipo del header de la app al pasar el puntero sobre él*/
 .header_logo:active, .header_config:active{
 	opacity:1;
-	-webkit-transform: scale(1.05,1.05);
-	-moz-transform: scale(1.05,1.05);
-	transform: scale(1.05,1.05);
+	-webkit-transform: scale(1.05,1.00);
+	-moz-transform: scale(1.05,1.00);
+	transform: scale(1.05,1.00);
 }
 
 /*======================================================================
@@ -116,9 +116,11 @@
  
  .menu_ ul li a:hover img{
  	opacity:1;
+ 	/*
  	-webkit-transform: scale(1.2,1.2);
 	-moz-transform: scale(1.2,1.2);
 	transform: scale(1.2,1.2);
+	*/
  }
  
  .menu_ ul li a img:active{
@@ -163,3 +165,47 @@
 	padding:3em;
 }
 
+/*======================================================================
+  PÁGINA CATEGORÍAS
+ =====================================================================*/
+ /*Listview de las Categorias*/
+ .lista_categorias_{}
+ 
+ .lista_categorias_ img{
+ 	margin:0.5em;
+ 	margin-top:5%;
+ 	margin-bottom:5%;
+ 	height:90%;
+ 	
+
+ }
+ 
+ /*Contenedor del Nombre y Logo de Cada Categoría*/
+ .header_categoria{
+
+ }
+ 
+ /*Logotipo de cada categoría*/
+ #cat_icon{
+	margin:0;
+	margin-left:4em;
+ 	width:10em;
+ }
+ 
+ /*Nombre de cada categoría*/
+ #cat_name{
+ 	height:10em;
+ 	background-color: #fff;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
