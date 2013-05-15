@@ -48,9 +48,9 @@
 .header_config{
 	display:block;
 	position:absolute;
-	right:2em;
+	right:1em;
 	bottom:5%;
-	height:4em;
+	height:70%;
 	
 	
 	opacity:0.8;
@@ -180,7 +180,7 @@
 
  }
  
- /*Contenedor del Nombre y Logo de Cada Categoría*/
+ /*Contenedor del Nombre y Logo de cada categoría*/
  .header_categoria{
 
  }
@@ -188,20 +188,74 @@
  /*Logotipo de cada categoría*/
  #cat_icon{
 	margin:0;
-	margin-left:4em;
- 	width:10em;
+	margin-left:2em;
+ 	width:20%;
  }
  
  /*Nombre de cada categoría*/
  #cat_name{
- 	height:10em;
+ 	width:40%;
  	background-color: #fff;
  }
  
+ /*======================================================================
+  PÁGINA CLIENTES
+ =====================================================================*/
+ .logo_cliente{
+ 	margin:0;
+ 	width:100%;
+ 	height:20%;
+ 	background-color:#fff;
+ }
  
+ .logo_cliente img{
+ 	margin:1em;
+ 	height:80%;
+ 	border-radius:1.2em;
+ }
  
+ .nombre_dir{
+ 	margin:1em;
+ }
  
+ .nombre_dir h1 , .nombre_dir h2 , .nombre_dir h3{
+ 	text-align:left;
+ 	font-weight: bold;
+ }
  
+ .contact_info{
+ 	margin:1em;
+ 	border:0.2em solid #999;
+ 	border-radius:1.2em;
+ 	background-color:#fff;
+ }
+ 
+ .telefonos_ ,.horario_{
+ 	border:0;
+ 	border-bottom: 0.2em solid #999;
+ }
+ 
+ .telefonos_ ,.horario_ , .web_{
+ 	padding:1em;
+ 	min-height: 4em;
+ }
+ .telefonos_ img,.horario_ img, .web_ img{
+ 	float:left;
+ 	width:3em;
+ }
+ 
+ .contact_tag{
+ 	float:left;
+ 	margin-left:1em;
+ 	font-weight: bold;
+ }
+ 
+ .telefonos_list, .horario_list, .web_list{
+ 	width:auto;
+ 	margin-left:4em;
+ 	
+ 	text-align:right;
+ }
  
  
  

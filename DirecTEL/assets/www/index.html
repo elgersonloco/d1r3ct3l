@@ -47,6 +47,94 @@
 
 <body  onload="init();">
 
+	<!-- PÁGINA DE PRUEBA DE COMO SE VA A VER EL CLIENTE -->
+	<!-- ================ PÁGINA CLIENTE ================= -->
+	<div data-role="page" id="cliente_">
+		<!-- ================ HEADER ================= -->
+		<header data-role="header" class="header_" >
+			<img class="header_logo"   src="css/images/logo_directel.png">
+			<img class="header_config" src="css/images/config.png"/>
+		
+		<!--  
+		<div  data-role="header">
+	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
+	        <h3>Anuncio</h3>-->
+	        
+
+	     	<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
+	     	<!-- ching.... lo toco si quiero .l. -->
+	    	<div data-role="fieldcontain" id="favoritoSelect">
+	    		<h2>
+		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
+			                <option value="off">
+			                    No
+			                </option>
+			                <option value="on">
+			                    Si
+			                </option>
+           			 </select>
+	       	 	</h2>
+      		</div>
+	    </header><!-- /header -->
+	      
+	    <!-- ================ CONTENT ================= -->
+	    <div class="logo_cliente">
+			<img src="img/cliente.jpg">
+		</div>
+	    <div data-role="content">
+	    	
+			
+			<div class="nombre_dir">
+				<h2 id="nombre">Seguros del Potosí</h2>
+				<h3>Dirección</h3>
+				<p id="direccion">
+					Venustiano Carranza No.426
+					</br>
+					Centro, C.P. 78300
+				</p>
+			</div>
+			
+			<div class="contact_info">
+				<div class="telefonos_">
+					<img src="img/phone.png">
+					<h3 class="contact_tag">Tels</h3>
+					<div class="telefonos_list">
+						<a>(444)834 90 00</a>
+					</div>
+				</div>
+				
+				<div class="horario_">
+					<img src="img/clock.png">
+					<h3 class="contact_tag">Horario</h3>
+					<div class="horario_list">
+						Lunes a Jueves:</br>
+						8:00 a 13:00 y 15:30 a 18:00</br>
+						Viernes:</br>
+						8:00 a 15:30
+					</div>
+				</div>
+				
+				<div class="web_">
+					<img src="img/web.png">
+					<h3 class="contact_tag">Web</h3>
+					<div class="web_list">
+						<a href="http://www.elpotosi.com.mx">www.elpotosi.com.mx</a>
+					</div>
+				</div>
+			</div>
+			<div id="map_"></div>
+			
+	    </div>
+	</div><!-- /page -->
+	<!--  Cliente  -->
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- ================ PÁGINA INICIAL ================= -->
 	<!-- Página Inicial -->
 	<div data-role="page" id="principal" data-theme="d">
@@ -98,7 +186,7 @@
 			        <p>Universidades, Uniformes, Guarderías .....</p></a>
 			    </li>
 			    
-			    <li><a href="#categoria" id="salud" title="salud" class="categoria">
+			    <li><a href="#categoria" id="doctores" title="salud" class="categoria">
 			        <img src="img/cat/logo_salud.png">
 			        <h2>Salud y Belleza</h2>
 			        <p>Farmacias, Médicos, Dentistas .....</p></a>
@@ -274,11 +362,8 @@
         <div data-role="content">
           <ul id="clientes_busqueda_categoria" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="escribe para buscar..." data-inset="true">
 		  </ul>
-        
         </div>
-
 	</div><!-- /page -->
-    </div>
 	<!-- /Categoria  -->
 	
 
@@ -287,14 +372,19 @@
 	<!-- ================ PÁGINA CLIENTE ================= -->
 	<div data-role="page" id="cliente">
 		<!-- ================ HEADER ================= -->
+		<header data-role="header" class="header_" >
+			<img class="header_logo"   src="css/images/logo_directel.png">
+			<img class="header_config" src="css/images/config.png"/>
+		
+		<!--  
 		<div  data-role="header">
 	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
-	        <h3>Anuncio</h3>
+	        <h3>Anuncio</h3>-->
 	        
-	        
-	        
-	     <!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. -->
-	    <div data-role="fieldcontain" id="favoritoSelect">
+
+	     	<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
+	     	<!-- ching.... lo toco si quiero .l. -->
+	    	<div data-role="fieldcontain" id="favoritoSelect">
 	    		<h2>
 		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
 			                <option value="off">
@@ -304,18 +394,15 @@
 			                    Si
 			                </option>
            			 </select>
-	        </h2>
-      		  </div>
-	        
-	        
-	        
-	    </div>
+	       	 	</h2>
+      		</div>
+	    </header><!-- /header -->
 	      
 	    <!-- ================ CONTENT ================= -->
 	    <div data-role="content">
 	    	<h1 id="imagen_logo"></h1>   
 		    <ul data-role="listview" data-split-icon="plus" data-theme="d" data-split-theme="b" data-inset="true">  <!-- data-split-icon="plus" data-theme="d" data-split-theme="b" data-inset="true" -->
-		    	<li data-role="list-divider"> Direccion:</li>
+		    	<li data-role="list-divider"> Dirección:</li>
 			    <li id="cliente_direccion"></li>
 			    <li data-role="list-divider">Telefonos:</li>
 			    <li id="tels"></li>
