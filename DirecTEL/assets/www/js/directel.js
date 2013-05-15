@@ -135,6 +135,10 @@ function eventosDinamicosAnuncios()
 		    	    });
 
 		});
+	
+	
+
+	
 }
 
 	
@@ -317,9 +321,6 @@ function cargaFavoritos(){
 	    	    });
 	
 }
-
-
-
 
 
 
