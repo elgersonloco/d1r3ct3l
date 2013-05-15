@@ -18,6 +18,7 @@
 	
 function init(){
 
+	alert("sdfsdf");
 	onLoad(); 
 	
 	//consulta de estados pantalla inicial  dfgdfg
@@ -293,7 +294,7 @@ function sliderFavoritosEvnt(){
 	});
 }
 
-<<<<<<< HEAD
+
 /********************************************************************
  * put_catIcon : coloca la imagen que le corresponde a la Categora
  * 
