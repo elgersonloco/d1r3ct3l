@@ -201,6 +201,11 @@
  /*======================================================================
   PÁGINA CLIENTES
  =====================================================================*/
+ .client_content{
+ 	margin-top:0;
+ 	padding-top:0;
+ }
+ 
  .logo_cliente{
  	margin:0;
  	width:100%;
@@ -215,16 +220,47 @@
  }
  
  .nombre_dir{
+ 	position:relative;
  	margin:1em;
+ 	margin-top:0;
+
  }
+ 
  
  .nombre_dir h1 , .nombre_dir h2 , .nombre_dir h3{
  	text-align:left;
  	font-weight: bold;
  }
  
- .contact_info{
- 	margin:1em;
+ .nombre_dir h2{
+ 	color:#3b5998;
+ }
+ 
+ .nombre_dir h1:first-letter , .nombre_dir h2:first-letter , .nombre_dir h3:first-letter{
+	font-size: 1.2em;
+ }
+ 
+ .client_social{
+ 	position:absolute;
+ 	right:0;
+ 	top:0;
+ }
+ 
+ .client_social img{
+ 	width:4.2em;
+ }
+ 
+ .client_fav{
+ 	position:absolute;
+ 	right:0;
+ 	bottom:0;
+ 	height:auto;
+ 	
+ 	border:0.2em solid red;
+ }
+ 
+ .contact_info, .map_{
+ 	margin:0.5em;
  	border:0.2em solid #999;
  	border-radius:1.2em;
  	background-color:#fff;
@@ -237,7 +273,7 @@
  
  .telefonos_ ,.horario_ , .web_{
  	padding:1em;
- 	min-height: 4em;
+ 	min-height: 3em;
  }
  .telefonos_ img,.horario_ img, .web_ img{
  	float:left;
@@ -248,14 +284,22 @@
  	float:left;
  	margin-left:1em;
  	font-weight: bold;
+
  }
  
  .telefonos_list, .horario_list, .web_list{
- 	width:auto;
+ 	margin-top:1.2em;
  	margin-left:4em;
- 	
+ 	width:auto;
  	text-align:right;
+
  }
+ 
+ .map_ img{
+ 	margin:1.2em;
+ 	border-radius:1.2em;
+ }
+
  
  
  

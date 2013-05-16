@@ -55,35 +55,14 @@
 			<img class="header_logo"   src="css/images/logo_directel.png">
 			<img class="header_config" src="css/images/config.png"/>
 		
-		<!--  
-		<div  data-role="header">
-	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
-	        <h3>Anuncio</h3>-->
-	        
-
-	     	<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
-	     	<!-- ching.... lo toco si quiero .l. -->
-	    	<div data-role="fieldcontain" id="favoritoSelect">
-	    		<h2>
-		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
-			                <option value="off">
-			                    No
-			                </option>
-			                <option value="on">
-			                    Si
-			                </option>
-           			 </select>
-	       	 	</h2>
-      		</div>
 	    </header><!-- /header -->
 	      
 	    <!-- ================ CONTENT ================= -->
 	    <div class="logo_cliente">
 			<img src="img/cliente.jpg">
 		</div>
-	    <div data-role="content">
+	    <div data-role="content" class="client_content">
 	    	
-			
 			<div class="nombre_dir">
 				<h2 id="nombre">Seguros del Potosí</h2>
 				<h3>Dirección</h3>
@@ -92,6 +71,28 @@
 					</br>
 					Centro, C.P. 78300
 				</p>
+				
+				<!-- Redes sociales -->
+				<div class="client_social">
+					<img src="img/facebook.png"/>
+					<img src="img/twitter.png" />
+				</div>
+				
+				<!-- Favoritos -->
+				<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
+		     	<!-- ching.... lo toco si quiero .l. -->
+		    	<div id="favoritoSelect" class="client_fav">
+		    		<h2>
+			            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
+				                <option value="off">
+				                    No
+				                </option>
+				                <option value="on">
+				                    Si
+				                </option>
+	           			 </select>
+		       	 	</h2>
+	      		</div><!-- /fav -->
 			</div>
 			
 			<div class="contact_info">
@@ -122,7 +123,10 @@
 					</div>
 				</div>
 			</div>
-			<div id="map_"></div>
+			
+			<div class="map_">
+				<img src="img/mapota.png"/>
+			</div>
 			
 	    </div>
 	</div><!-- /page -->
