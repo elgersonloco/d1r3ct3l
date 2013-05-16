@@ -47,6 +47,7 @@
 
 <body  onload="init();">
 
+<<<<<<< HEAD
 	<!-- PÁGINA DE PRUEBA DE COMO SE VA A VER EL CLIENTE -->
 	<!-- ================ PÁGINA CLIENTE ================= -->
 	<div data-role="page" id="cliente_">
@@ -58,11 +59,12 @@
 	    </header><!-- /header -->
 	      
 	    <!-- ================ CONTENT ================= -->
-	    <div class="logo_cliente">
-			<img src="img/cliente.jpg">
-		</div>
+	    
 	    <div data-role="content" class="client_content">
-	    	
+	    	<div class="logo_cliente">
+	    		<a><img src="img/cliente.jpg"></a>
+			</div>
+			
 			<div class="nombre_dir">
 				<h2 id="nombre">Seguros del Potosí</h2>
 				<h3>Dirección</h3>
@@ -72,15 +74,15 @@
 					Centro, C.P. 78300
 				</p>
 				
-				<!-- Redes sociales -->
+				<!-- Redes sociales -
 				<div class="client_social">
 					<img src="img/facebook.png"/>
 					<img src="img/twitter.png" />
-				</div>
+				</div>-->
 				
 				<!-- Favoritos -->
 				<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
-		     	<!-- ching.... lo toco si quiero .l. -->
+		     	<!-- ching.... lo toco si quiero .l. 
 		    	<div id="favoritoSelect" class="client_fav">
 		    		<h2>
 			            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
@@ -92,7 +94,15 @@
 				                </option>
 	           			 </select>
 		       	 	</h2>
+		       	 			
 	      		</div><!-- /fav -->
+	      		<div class="client_fav">
+		      		<div class="check_fav">
+						<input type="checkbox" id="check_fav"/>
+						<label for="check_fav"></label>
+					</div>
+	      		</div>
+
 			</div>
 			
 			<div class="contact_info">
@@ -135,6 +145,8 @@
 	
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/jwormc/d1r3ct3l.git
 	
 	
 	
@@ -321,10 +333,18 @@
 	
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
-		
-	<h1>C</h1>
-
-		</div>
+        <div data-role="fieldcontain">
+            <input name="" id="textABuscar" placeholder="" value="" type="text">
+        </div>
+        <a data-role="button" href="javascript:busqueda()">
+            Buscar
+        </a>
+        
+        
+          <ul id="clientes_busqueda" data-role="listview"  data-inset="true">
+		  </ul>
+        
+    	</div>
 		<!-- /content -->
 	
 		<!-- ================ FOOTER ================= -->

@@ -79,6 +79,7 @@
  	padding:2em;
  }
  
+ /*elemento del menu*/
  .menu_ ul li{
  	width:30%;
  	border:0;
@@ -88,6 +89,7 @@
  	border-radius:2em;
  }
  
+ /*Primer elemento de menu redondeado*/
  .menu_ ul li:first-child, .menu_ ul li:first-child a{
  	-webkit-border-top-left-radius: 2em;
  	-webkit-border-bottom-left-radius: 2em;
@@ -97,6 +99,7 @@
  	border-bottom-left-radius: 2em;
  }
  
+ /*último elemento del menu redondeado*/
   .menu_ ul li:last-child, .menu_ ul li:last-child a{
   	-webkit-border-top-right-radius: 2em;
  	-webkit-border-bottom-right-radius: 2em;
@@ -106,6 +109,7 @@
  	border-bottom-right-radius: 2em;
  }
  
+ /*Imagen de cada elemento*/
  .menu_ ul li a img{
 	width:3em;
  	opacity:0.8;
@@ -114,6 +118,7 @@
 	transition:all 0.5s ease;
  }
  
+  /*Imagen de cada elemento cuando se pasa sobre el*/
  .menu_ ul li a:hover img{
  	opacity:1;
  	/*
@@ -122,7 +127,7 @@
 	transform: scale(1.2,1.2);
 	*/
  }
- 
+ /*Imagen de cada elemento despues de activarlo*/
  .menu_ ul li a img:active{
  	opacity:1;
  	-webkit-transform: scale(1.4,1.4);
@@ -146,7 +151,7 @@
 	margin-left:auto;
 	margin-right:auto;
 	
-	width:50%;
+	width:70%;
 
 }
 
@@ -198,88 +203,234 @@
  	background-color: #fff;
  }
  
+ 
  /*======================================================================
   PÁGINA CLIENTES
  =====================================================================*/
+ /*Contenedor de la información del cliente*/
  .client_content{
+ 	position:relative;
  	margin-top:0;
  	padding-top:0;
- }
- 
- .logo_cliente{
+ 	text-transform:none;
+ 	
+ 	font-size:1.2em;
  	margin:0;
- 	width:100%;
- 	height:20%;
- 	background-color:#fff;
+ 	padding:0;
  }
- 
+ /*---------------------------------------------*/
+ /*Contenedor del Logotipo del cliente          */
+ /*---------------------------------------------*/
+ /*Igual que .contact_info, .map_*/
+ .logo_cliente{
+ 	
+ 	margin:0.5em;
+ 	border:0.2em solid #999;
+ 	height:20%;
+ 	
+ 	-webkit-border-radius:1.2em;
+ 	-moz-border-radius:1.2em;
+ 	border-radius:1.2em;
+ 	background-color:#fff;
+ 	
+ 	-webkit-box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    -moz-box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    
+    text-align: center;
+ }
+
+  /*Logotipo del cliente*/
  .logo_cliente img{
- 	margin:1em;
  	height:80%;
+	margin:0.6em;
+	
+ 	border: 0.2em solid #999;
+ 	-webkit-border-radius:1.2em;
+ 	-moz-border-radius:1.2em;
  	border-radius:1.2em;
  }
+
+ /*---------------------------------------------*/
  
+ /*---------------------------------------------*/
+ /*Contenedor del nombre, dirección y favorito  */
+ /*---------------------------------------------*/
  .nombre_dir{
  	position:relative;
  	margin:1em;
  	margin-top:0;
-
  }
  
- 
+ /*Titulos h1,h2 y h3 de nombre_dir*/
  .nombre_dir h1 , .nombre_dir h2 , .nombre_dir h3{
  	text-align:left;
  	font-weight: bold;
+ 	text-transform:uppercase;
  }
+ /*Color del Nombre del cliente*/
+ .nombre_dir h2{color:#3b5998;}
+ /*Titulos h1, h2 y h3 con la primera letra más grande*/
+ .nombre_dir h1:first-letter , .nombre_dir h2:first-letter , .nombre_dir h3:first-letter{font-size: 1.2em;}
+ /*---------------------------------------------*/
  
- .nombre_dir h2{
- 	color:#3b5998;
- }
- 
- .nombre_dir h1:first-letter , .nombre_dir h2:first-letter , .nombre_dir h3:first-letter{
-	font-size: 1.2em;
- }
- 
+ /*---------------------------------------------*/
+ /*Contenedor de las redes sociales superiores  */
+ /*---------------------------------------------*/
+ /*disabled*/
  .client_social{
  	position:absolute;
  	right:0;
  	top:0;
  }
- 
+ /*Imagenes de las redes sociales*/
  .client_social img{
  	width:4.2em;
  }
+ /*---------------------------------------------*/
  
+ 
+ /*---------------------------------------------*/
+ /*Checkbox personalizado de favoritos          */
+ /*---------------------------------------------*/
+ /*Contenedor del control*/
  .client_fav{
  	position:absolute;
  	right:0;
  	bottom:0;
  	height:auto;
- 	
- 	border:0.2em solid red;
  }
  
+ /*Deshabilitamos el checkbox a invisible*/
+.check_fav input[type=checkbox] {
+	display:none;
+	visibility: hidden;
+}
+
+/*Contenedor del checkbox personalizado (fondo)*/
+.check_fav {
+	position: relative;
+	display:inline-block;
+	width: 5em;
+	height: 5em;
+	padding:0;
+	
+	
+	background: #fcfff4;
+	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+
+	-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+
+}
+
+/*Segundo contenedor (interior)*/
+.check_fav label {
+	 width:4em;
+	 height:4em;
+	 margin:0.5em auto;
+	 padding:0;
+
+	 opacity:1;
+	 
+	 background: #fcfff4;
+	 background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	 background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	 background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	 background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	 background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+	 
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+	
+}
+/*Funcionalidad del checkbox a través del label*/
+.check_fav label:after {
+
+	opacity: 0.2;
+	content: '';
+	position: absolute;
+	width:100%;
+	height:100%;
+	margin:0;
+	top:0;
+	left:0;
+	
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+	
+	/*Imagen*/
+	background-image:url('images/fav-checked.png');
+	background-repeat: no-repeat;
+	background-size:80%;
+	background-position:center; 
+	
+}
+
+/*favoritos hover*/
+.check_fav label:hover::after {opacity:0.6;}
+
+/*favoritos checked*/
+.check_fav input[type=checkbox]:checked + label:after {opacity: 1;}
+
+/*Dejarlas sino aparece una barra | imposible de quitar*/
+.check_fav .ui-btn-text{display:none;}
+.check_fav .ui-btn-inner{display:none;}
+ /*---------------------------------------------*/
+
+
+
+ /*---------------------------------------------*/
+ /*Información de contacto y mapa               */
+ /*---------------------------------------------*/
+ 
+ /*Borde de los contenedores del mapa y la info*/
  .contact_info, .map_{
  	margin:0.5em;
  	border:0.2em solid #999;
+ 	
+ 	-webkit-border-radius:1.2em;
+ 	-moz-border-radius:1.2em;
  	border-radius:1.2em;
  	background-color:#fff;
+ 	
+ 	-webkit-box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    -moz-box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
  }
  
+ /*Borde inferior (separadora) entre la información de contacto*/
  .telefonos_ ,.horario_{
  	border:0;
  	border-bottom: 0.2em solid #999;
  }
  
+ /*Contenedores de las categorías (telefonos, horario, web*/
  .telefonos_ ,.horario_ , .web_{
  	padding:1em;
  	min-height: 3em;
  }
+ 
+ /*Imagenes de las categorías de la información*/
  .telefonos_ img,.horario_ img, .web_ img{
  	float:left;
  	width:3em;
  }
  
+ /*Etiqueta que indica el tipo de teléfono, horario o tipo de enlace (izquierda)*/
  .contact_tag{
  	float:left;
  	margin-left:1em;
@@ -287,19 +438,23 @@
 
  }
  
+ /*Información de cada elemento telefono, horario, web (derecha)*/
  .telefonos_list, .horario_list, .web_list{
  	margin-top:1.2em;
  	margin-left:4em;
  	width:auto;
  	text-align:right;
-
  }
  
+ /*los enlaces url son en minusculas*/
+ .web_list{text-transform:lowercase;}
+ 
+ /*Imagen del mapa*/
  .map_ img{
  	margin:1.2em;
  	border-radius:1.2em;
  }
-
+ /*---------------------------------------------*/
  
  
  
