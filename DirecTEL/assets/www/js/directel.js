@@ -19,6 +19,7 @@
 function init(){
 
 	onLoad(); 
+	initialize();
 	
 	//consulta de estados pantalla inicial  dfgdfg
 	   $.ajax(
@@ -84,13 +85,26 @@ function eventosDinamicosAnuncios()
 		    	        	
 		    	       
 		    	        	if(null == window.localStorage.getItem(actualAnuncioId)){
+		    	        		
 		    	        	 $('#favoritoSelect h2').remove();
 		    	        	 $('#favoritoSelect').append('<h2><select name="ToggleFavorito" id="toggleFavorito" class="favorClass" data-theme="a" data-role="slider"><option value="off">No</option><option value="on">Si</option></select></h2>');
 				    	  	}else{
 				    	    $('#favoritoSelect h2').remove();
-		    	        	 $('#favoritoSelect').append('<h2><select name="ToggleFavorito" id="toggleFavorito" class="favorClass" data-theme="a" data-role="slider"><option value="on">Si</option><option value="off">No</option></select></h2>');
-		  		    	       
+		    	        	 $('#favoritoSelect').append('<h2><select name="ToggleFavorito" id="toggleFavorito" class="favorClass" data-theme="a" data-role="slider"><option value="on">Si</option><option value="off">No</option></select></h2>');  
 			    	    	}
+		    	        	
+		    	        	
+		    	        	
+		    	         /*	if(null == window.localStorage.getItem(actualAnuncioId)){
+		    	         		1=$('#favoritoSelect_').html();
+			    	        	 $('#favoritoSelect_').html('');
+			    	        	 $('#favoritoSelect_').append('<select name="ToggleFavorito_" id="toggleFavorito_" class="favorClass" data-theme="a" data-role="slider"><option value="off">No</option><option value="on">Si</option></select>');
+					    	  	}else{
+					    	    1=$('#favoritoSelect_').html();
+					    	    $('#favoritoSelect_').html('');
+			    	        	$('#favoritoSelect_').append('<select name="ToggleFavorito_" id="toggleFavorito_" class="favorClass" data-theme="a" data-role="slider"><option value="on">Si</option><option value="off">No</option></select>');  
+				    	    	}*/
+			    	        	
 		    	        	
 		    	        	
 		    	        	var datos=response.split("|");
@@ -132,7 +146,7 @@ function eventosDinamicosAnuncios()
 		    	               }, 1000 );
 		    	        	 
 		    	        	 $(".linkses a").animate({
-		    	                 color: "#fff",
+		    	                 color: "#00f",
 		    	                 width: 240
 		    	               }, 1000 );
 
@@ -175,7 +189,6 @@ function onDeviceReady() {
 function addFavoritos(id){
 	window.localStorage.setItem(id, "favorito");
 	var keyName = window.localStorage.getItem(id);
-	alert("lenght storage = " + window.localStorage.length);
 	}
 	
 
@@ -427,5 +440,16 @@ function busqueda(){
 }
 
 
+function initialize() {
 
+	$("#map_canvas").css("height","400")
+	
+    var mapOptions = {
+      center: new google.maps.LatLng(-34.397, 150.644),
+      zoom: 4,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        mapOptions);
+  }
 	
