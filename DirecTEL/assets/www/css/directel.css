@@ -413,19 +413,19 @@
  }
  
  /*Borde inferior (separadora) entre la información de contacto*/
- .telefonos_ ,.horario_{
+ .telefonos_ ,.horario_, .webs_, .web_b{
  	border:0;
  	border-bottom: 0.2em solid #999;
  }
  
- /*Contenedores de las categorías (telefonos, horario, web*/
- .telefonos_ ,.horario_ , .web_{
+ /*Contenedores de las categorías (telefonos, horario, web, email)*/
+ .telefonos_ ,.horario_ , .webs_, .web_b, .email_{
  	padding:1em;
  	min-height: 3em;
  }
  
  /*Imagenes de las categorías de la información*/
- .telefonos_ img,.horario_ img, .web_ img{
+ .telefonos_ img,.horario_ img,.webs_ img, .web_b img, .email_ img{
  	float:left;
  	width:3em;
  }
@@ -439,21 +439,84 @@
  }
  
  /*Información de cada elemento telefono, horario, web (derecha)*/
- .telefonos_list, .horario_list, .web_list{
+ .telefonos_list, .horario_list, .email_list, .web_list_b{
  	margin-top:1.2em;
  	margin-left:4em;
  	width:auto;
  	text-align:right;
  }
  
+  /*Horario y webs bajo su nombre*/
+ .horario_list, .webs_list{text-align:left; clear:both;}
+ 
  /*los enlaces url son en minusculas*/
- .web_list{text-transform:lowercase;}
+ .web_list_a,.web_list_b, .email_list{text-transform:lowercase;}
+ 
+ /*Enlaces web tipo 'a'*/
+ .webs_list{margin-left:3em;}
+ 
+ /*Cada enlace web tipo 'a'*/
+ .web_a{
+ 	display:block;
+ 	width:100%;
+ 	
+ }
+ 
+ /*Imagenes de enlaces web tipo 'a'*/
+ .web_a img{
+ 	float:none;
+ 	width:3em;
+ }
+ /*Enlace en si tipo 'a'*/
+ .web_a .link{
+ 	position:relative;
+ 	top:-1em;
+ 	width:auto;
+}
+ 
+ /*Enlace*/
  
  /*Imagen del mapa*/
+ .map_{
+ 	overflow:auto;
+ }
  .map_ img{
  	margin:1.2em;
+ 	margin-left:2%;
+ 	margin-right:2%;
  	border-radius:1.2em;
+	width:96%;
  }
+ 
+ /*Texto de enlaces y teléfonos*/
+ .telefonos_list, .email_list, .web_list_b, .web_list_a{
+ 	text-decoration: none;
+ 	font-size: 1.3em;
+ 	color:#1c3cc9;
+ }
+ 
+ /*Texto de enlaces y teléfonos*/
+ .telefonos_list a, .email_list a, .web_list_b a, .web_list_a a{
+ 	text-decoration: none;
+ 	color:#1c3cc9;
+ }
+  /*Texto de enlaces y teléfonos hover*/
+  .telefonos_list a:hover, .email_list a:hover, .web_list_b a:hover, .web_list_a a:hover{
+ 	text-decoration: none;
+ 	color:#1c3cc9;
+ }
+  /*Texto de enlaces y teléfonos visitados*/
+  .telefonos_list a:visited, .email_list a:visited, .web_list_b a:visited, .web_list_a a:visited{
+ 	text-decoration: none;
+ 	color:#1c3cc9;
+ }
+ 
+ /*Telefonos*/
+ .telefonos_list {font-weight: bold;}
+ 
+ /*enlaces mas pequeños*/
+ .web_list_b a, .web_list_a a{font-size:0.8em;}
+ 
  /*---------------------------------------------*/
  
  
