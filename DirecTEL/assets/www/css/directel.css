@@ -441,13 +441,15 @@
  /*Informaci—n de cada elemento telefono, horario, web (derecha)*/
  .telefonos_list, .horario_list, .email_list, .web_list_b{
  	margin-top:1.2em;
- 	margin-left:4em;
+ 	margin-left:0em;
  	width:auto;
  	text-align:right;
+
  }
  
   /*Horario y webs bajo su nombre*/
  .horario_list, .webs_list{text-align:left; clear:both;}
+ .horario_list{margin-left:2em;}
  
  /*los enlaces url son en minusculas*/
  .web_list_a,.web_list_b, .email_list{text-transform:lowercase;}
@@ -516,6 +518,7 @@
  
  /*enlaces mas peque–os*/
  .web_list_b a, .web_list_a a{font-size:0.8em;}
+ .email_list a{font-size:0.8em;}
  
  /*---------------------------------------------*/
  

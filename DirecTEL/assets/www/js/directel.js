@@ -400,14 +400,15 @@ function getClient_info(){
     	//Limpia informaci—n
     	cleanClient_info();
     	
-    	client_logo = "";       //Logotipo del cliente
-    	client_name = "";       //Nombre del cliente
-    	client_addr = "";       //Direccion del cliente
-    	client_tels = "";       //Telefonos del cliente
-    	client_hours= "";       //Horario del cliente
-    	client_email= "";       //Email del cliente
-    	client_web  = "";       //Webs del cliente
-    	client_map  = "";       //Mapa del cliente
+    	client_logo    = "";       //Logotipo del cliente
+    	client_name    = "";       //Nombre del cliente
+    	client_addr    = "";       //Direccion del cliente
+    	client_tels    = "";       //Telefonos del cliente
+    	client_hours   = "";       //Horario del cliente
+    	client_email   = "";       //Email del cliente
+    	client_web 	   = "";       //Webs del cliente
+    	client_map     = "";       //Mapa del cliente
+    	client_map_ext = "";       //Mapa del cliente grande
     	
 	     //ID
 	     actualAnuncioId=$('#'+this.id).attr("id");  //atual id de cliente usado para la categorizacion de favoritos
@@ -415,7 +416,7 @@ function getClient_info(){
 	     //Obtiene la info desde el WS
 		 //data: {tipoServicio:"10",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		 xsize=$(window).width();     // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
-		 ysize=$(window).height()/4;  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+		 ysize=$(window).height();    // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
 		
 			 
 		$.ajax(
@@ -424,19 +425,21 @@ function getClient_info(){
 		     data: {tipoServicio:"10",anyparam:$('#'+this.id).attr("id"), displaysize:xsize + "x" + ysize},
 		     success: function(response)
 		     {
-		    	 xsize=$(window).width();   // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
-		 		 ysize=($(window).height())*.30;  // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+		    	 xsize=$(window).width();     // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
+		    	 ysize=$(window).height();    // se hace aki por que si lo hacias desde init, no alcanzaba a cargar el display size
 		 	
 		    	 var data=response.split("|");
 		    	 //if(data.lenght>=7){
-		    		 client_logo = data[0];
-		    		 client_name = data[1];    
-		    		 client_addr = data[2];      
-		    		 client_tels = data[3];      
-		    		 client_hours= data[4];       
-		    		 client_email= data[5];       
-		    		 client_web  = data[6];   
-		    		 client_map  = data[7];
+		    		 client_logo 	= data[0];
+		    		 client_name 	= data[1];    
+		    		 client_addr 	= data[2];      
+		    		 client_tels 	= data[3];      
+		    		 client_hours	= data[4];       
+		    		 client_email	= data[5];       
+		    		 client_web  	= data[6];   
+		    		 client_map  	= data[7];
+		    		 client_map_ext = data[8];
+		    		 
 		    	 //}//if
 		    	
 		         //Llena dartos del cliente
@@ -480,6 +483,9 @@ function cleanClient_info(){
 	
 	//Mapa
 	document.getElementById('replace_map').innerHTML = '';
+	
+	//Mapa Grande
+	document.getElementById('replace_map_ext').innerHTML = '';
 }//cleanClient_info
 
 
@@ -516,6 +522,9 @@ function fillClient_info(){
 	
 	//Mapa
 	document.getElementById('replace_map').innerHTML = client_map;
+	
+	//Mapa Grande
+	document.getElementById('replace_map_ext').innerHTML = client_map_ext;
 }//fillClient_info
 
 
