@@ -522,7 +522,35 @@
  
  /*---------------------------------------------*/
  
- 
+ /*======================================================================
+  PÁGINA CLIENTES
+ =====================================================================*/
+ .content_map{
+	 margin:0;
+	 padding:0;
+ }
+ /*Borde de los contenedores del mapa*/
+.map_ext{
+ 	margin:0.2em;
+ 	border:0.2em solid #999;
+ 	overflow:auto;
+ 	
+ 	-webkit-border-radius:1.2em;
+ 	-moz-border-radius:1.2em;
+ 	border-radius:1.2em;
+ 	background-color:#fff;
+ 	
+ 	-webkit-box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    -moz-box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+    box-shadow:0 0 0.8em #777, 0 0 1.8em #CCC inset;
+ }
+
+/*Imagen del mapa*/
+ .map_ext img{
+ 	margin:1%;
+ 	border-radius:1.2em;
+	width:98%;
+ }
  
  
  

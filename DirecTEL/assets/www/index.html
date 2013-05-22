@@ -62,6 +62,10 @@
 		    <ul id="estados_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
 		    </ul>
 		</div><!-- /content -->
+		
+		<div>
+			<!-- <a href="market://details?id=com.rovio.angrybirds">MARKET</a>-->
+		</div>
 	</div><!-- /page -->
 
 	
@@ -195,9 +199,22 @@
 	<!-- Favoritos -->
 	<div data-role="page" id="favoritos" data-theme="d">
 		<!-- ================ HEADER ================= -->
-		<div data-role="header">
-			<h1>DirecTEL</h1>
-		</div><!-- /header -->
+		<header data-role="header" class="header_" >
+			<img class="header_logo"   src="css/images/logo_directel.png">
+			<img class="header_config" src="css/images/config.png"/>
+		</header><!-- /header -->
+		
+		<!--  =============== MENU =================== -->
+		<nav data-role="navbar" class="menu_">
+				<ul>
+					<li><a href="#lista_categorias">
+						<img src="img/category.png"/></a></li>
+					<li><a href="#favoritos" onclick="cargaFavoritos();">
+						<img src="img/favorite.png"/></a></li>
+					<li><a href="#busquedas">
+						<img src="img/search.png"/></a></li>
+				</ul>
+		</nav><!-- /navbar -->
 
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
@@ -207,17 +224,6 @@
 		</div>
 		<!-- /content -->
 	
-		<!-- ================ FOOTER ================= -->
-		<div data-role="footer">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#lista_categorias">Categorias</a></li>
-					<li><a href="#favoritos">Favoritos</a></li>
-					<li><a href="#busquedas">Busquedas</a></li>
-					<li><a href="#principal">Inicio</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
 	</div>
 	<!-- /page -->
 	
@@ -228,15 +234,29 @@
 	<!-- Start of Busqueda -->
 	<div data-role="page" id="busquedas">
 		<!-- ================ HEADER ================= -->
-		<div data-role="header">
-			<h1>DirecTEL</h1>
-		</div><!-- /header -->
+		<header data-role="header" class="header_" >
+			<img class="header_logo"   src="css/images/logo_directel.png">
+			<img class="header_config" src="css/images/config.png"/>
+		</header><!-- /header -->
+		
+		<!--  =============== MENU =================== -->
+		<nav data-role="navbar" class="menu_">
+				<ul>
+					<li><a href="#lista_categorias">
+						<img src="img/category.png"/></a></li>
+					<li><a href="#favoritos" onclick="cargaFavoritos();">
+						<img src="img/favorite.png"/></a></li>
+					<li><a href="#busquedas">
+						<img src="img/search.png"/></a></li>
+				</ul>
+		</nav><!-- /navbar -->
 	
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
         <div data-role="fieldcontain">
             <input name="" id="textABuscar" placeholder="" value="" type="text">
         </div>
+        
         <a data-role="button" href="javascript:busqueda()">
             Buscar
         </a>
@@ -248,17 +268,6 @@
     	</div>
 		<!-- /content -->
 	
-		<!-- ================ FOOTER ================= -->
-		<div data-role="footer">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#lista_categorias">Categorias</a></li>
-					<li><a href="#favoritos">Favoritos</a></li>
-					<li><a href="#busquedas">Busquedas</a></li>
-					<li><a href="#principal">Inicio</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
 	</div>
 	<!-- /page -->
 	
@@ -320,25 +329,11 @@
 					<img src="img/twitter.png" />
 				</div>-->
 				
-				<!-- Favoritos -->
-				<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
-		     	<!-- ching.... lo toco si quiero .l. 
-		    	<div id="favoritoSelect" class="client_fav">
-		    		<h2>
-			            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
-				                <option value="off">
-				                    No
-				                </option>
-				                <option value="on">
-				                    Si
-				                </option>
-	           			 </select>
-		       	 	</h2>
 		       	 			
 	      		</div><!-- /fav -->
 	      		<div class="client_fav">
 		      		<div class="check_fav">
-						<input type="checkbox" id="check_fav"/>
+						<input type="checkbox" id="check_fav" onchange="favorChange(this)"/>
 						<label for="check_fav"></label>
 					</div>
 	      		</div>
@@ -407,8 +402,8 @@
 	    </header><!-- /header -->
 	    
 	    <!-- ================ CONTENT ================= -->
-        <div data-role="content">
-        	<div id="replace_map_ext" class="map_">
+        <div data-role="content" class="content_map">
+        	<div id="replace_map_ext" class="map_ext">
 				<img src="img/mapota.png"/>
 			</div>
         </div>

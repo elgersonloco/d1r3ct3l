@@ -21,15 +21,28 @@
 	var client_hours= "";       //Horario del cliente
 	var client_email= "";       //Email del cliente
 	var client_web  = "";       //Webs del cliente
+	var client_map     = "";    //Mapa del cliente
+	var client_map_ext = "";    //Mapa del cliente grande
+	
+	var flagFav = false;        //Bandera que indica si el anuncio es favorito
+	var flagVer = false;        //Bandera que indica si la app esta actualizada
 	
 // <img src="http://maps.googleapis.com/maps/api/staticmap?center=22.1514818,-100.9802254&zoom=17&size=500x500&markers=color:blue%7Clabel:S%7C22.1514818,-100.9802254&sensor=false"  width="288" height="200"/>
 	
 	
 function init(){
 
+	//Init
 	onLoad(); 
 	initialize();
 	
+	//Verifica la versi—n
+	version_ok();
+	
+}//init
+
+
+function init_ok(){
 	//consulta de estados pantalla inicial  dfgdfg
 	   $.ajax(
 	    	    {
@@ -71,9 +84,40 @@ function init(){
 		    	 		    	    });
 
 	  	});
-
+	
 }
 
+/********************************************************************
+ * version_ok : verifica la versi—n actualizada
+ * 
+ * @date    May 21th, 2013
+ * @author  Howser
+ * 
+ ********************************************************************/
+function version_ok()
+{
+	$.ajax(
+		{
+	        url: serverA,
+	        data: {tipoServicio:"20",anyparam:"",displaysize:xsize + "x" + ysize},
+	        success: function(response)
+	        {
+	        	var data=response.split("|");
+	        	if(data[0]=='0.8'){
+	        		flagVer = true;
+	        		init_ok();
+	        		//alert('a'+data[0]+'flagVer');
+	        	}
+	        	else{
+	        		alert('LA APP NO ESTA ACTUALIZADA, FAVOR DE INSTALAR LA VERSION MAS RECIENTE ');
+	        		//alert('a'+data[0]+'flagVer');
+	        		flagVer = false;
+	        		window.location.href = "market://details?id=com.rovio.angrybirds"; 
+	        	}
+	        }//success
+	});//ajax
+	
+}//version_ok
 
 function eventosDinamicosAnuncios()
 {
@@ -199,11 +243,13 @@ function onDeviceReady() {
 function addFavoritos(id){
 	window.localStorage.setItem(id, "favorito");
 	var keyName = window.localStorage.getItem(id);
+	//alert('added to fav');
 	}
 	
 
 function removeFavoritos(id){
 	window.localStorage.removeItem(id);
+	//alert('remove from fav');
 }
 
 
@@ -316,6 +362,23 @@ function sliderFavoritosEvnt(){
 	});
 }
 
+/********************************************************************
+ * favorChange : A–ade o Elimina a la publicaci—n de favoritos
+ * 
+ * @date    May 20th, 2013
+ * @author  Howser
+ * 
+ ********************************************************************/
+function favorChange(fav_check){
+	
+	if(fav_check.checked){
+		addFavoritos(actualAnuncioId);
+	}else{
+		removeFavoritos(actualAnuncioId);
+	}
+	
+}//favorChange
+
 
 /********************************************************************
  * put_catIcon : coloca la imagen que le corresponde a la Categora
@@ -410,6 +473,8 @@ function getClient_info(){
     	client_map     = "";       //Mapa del cliente
     	client_map_ext = "";       //Mapa del cliente grande
     	
+    	flagFav        = false     //Badera que indica si el anuncio es favorito
+    	
 	     //ID
 	     actualAnuncioId=$('#'+this.id).attr("id");  //atual id de cliente usado para la categorizacion de favoritos
 		 
@@ -441,11 +506,19 @@ function getClient_info(){
 		    		 client_map_ext = data[8];
 		    		 
 		    	 //}//if
+		    		 
+	    		//Verifica si esta marcado como favorito
+	    			 if(null == window.localStorage.getItem(actualAnuncioId))
+	    			    	flagFav = false;	
+	    			 else
+	    					flagFav = true;
 		    	
 		         //Llena dartos del cliente
 		    		 fillClient_info();
 		     }
 			});//ajax
+		
+		
     });//(".listadeclientes").click
 
 }//getClient_info
@@ -486,6 +559,9 @@ function cleanClient_info(){
 	
 	//Mapa Grande
 	document.getElementById('replace_map_ext').innerHTML = '';
+	
+	//Marcado como favorito
+	document.getElementById("check_fav").checked = false;
 }//cleanClient_info
 
 
@@ -525,6 +601,9 @@ function fillClient_info(){
 	
 	//Mapa Grande
 	document.getElementById('replace_map_ext').innerHTML = client_map_ext;
+	
+	//Marcado como favorito
+	document.getElementById("check_fav").checked = flagFav;
 }//fillClient_info
 
 
@@ -543,7 +622,7 @@ function cargaFavoritos(){
 	}
 	
 	
-	alert("String favors -> " +  favorsCadena);
+	//alert("String favors -> " +  favorsCadena);
 	
 	   //data: {tipoServicio:"4",anyparam:favorsCadena,displaysize:xsize + "x" + ysize},
 	   $.ajax(
