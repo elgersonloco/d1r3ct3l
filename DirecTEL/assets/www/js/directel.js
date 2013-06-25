@@ -425,59 +425,59 @@ function put_catIcon(){
 	switch(categoria_actual){
 		case "apoyos_financieros":
 			  //color = "#7f5e3f";
-			  color = "#6c4c2f";
+			  color = "#805e3d";
 			  break;
 		case "automotriz":
 			  //color = "#a32431";
-			  color = "#931623";
+			  color = "#a6262e";
 			  break;
 		case "construccion":
 			  //color = "#e9ae4a";
-			  color = "#e5a134";
+			  color = "#ebb042";
 			  break;
 		case "deporte":
 			  //color = "#cf4239";
-			  color = "#c62f29";
+			  color = "#d34435";
 			  break;
 		case "educacion":
 			  //color = "#ca0088";
-			  color = "#c00076";
+			  color = "#ce2689";
 			  break;
 		case "gobiernos":
 			  //color = "#7d2b8b";
-			  color = "#6a1279";
+			  color = "#7f278c";
 			  break;
 		case "hogar":
 			  //color = "#9fc54d";
-			  color = "#8ebe37";
+			  color = "#9ec646";
 			  break;
 		case "medios_e_imagen":
 			  //color = "#39673e";
-			  color = "#2b562e";
+			  color = "#37673c";
 			  break;
 		case "industria":
 			  //color = "#6e6659";
-			  color = "#5b5446";
+			  color = "#6e6758";
 			  break;
 		case "oficinas":
 			  //color = "#882461";
-			  color = "#76124f";
+			  color = "#8a2362";
 			  break;
 		case "profesionistas":
 			  //color = "#5aa69d";
-			  color = "#46978b";
+			  color = "#55a69d";
 			  break;
 		case "recreacion_y_eventos_sociales":
 			  //color = "#cc2229";
-			  color = "#c2111c";
+			  color = "#cf2624";
 			  break;
 		case "salud_y_belleza":
 			  //color = "#00acec";
-			  color = "#0098e9";
+			  color = "#00aaee";
 			  break;	  
 		case "servicios_generales":
 			  //color = "#f2ca3c";
-			  color = "#f0c323";
+			  color = "#f4cc2c";
 			  break;
 	}//switch
 	
