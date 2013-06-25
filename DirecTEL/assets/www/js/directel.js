@@ -3,8 +3,8 @@
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
 
-	var serverA="http://187.137.163.189:666/VNServicios/ServletVServicios";
-
+	//var serverA="http://187.137.163.189:666/VNServicios/ServletVServicios";
+	var serverA="http://quad-tree.dyndns.org:666/VNServicios/ServletVServicios";
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
