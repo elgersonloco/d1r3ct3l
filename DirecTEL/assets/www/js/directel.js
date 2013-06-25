@@ -3,7 +3,7 @@
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
 
-	var serverA="http://quad-tree.dyndns.org:666/VNServicios/ServletVServicios";
+	var serverA="http://187.137.163.189:666/VNServicios/ServletVServicios";
 
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
@@ -14,7 +14,7 @@
 	var anuncioActualId ="";     //Id del Anuncio actual
 	var categoria_actual="";     //Nombre de la Categora que se va a visualizar
 	
-	//Informaci—n del Cliente
+	//Informacion del Cliente
 	var client_logo = "";       //Logotipo del cliente
 	var client_name = "";       //Nombre del cliente
 	var client_desc = "";       //Descripcion corta del cliente
@@ -38,7 +38,7 @@ function init(){
 	onLoad(); 
 	initialize();
 	
-	//Verifica la versi—n
+	//Verifica la versiï¿½n
 	version_ok();
 	
 }//init
@@ -113,7 +113,7 @@ function init_ok(){
 }//init_ok
 
 /********************************************************************
- * version_ok : verifica la versi—n actualizada
+ * version_ok : verifica la version actualizada
  * 
  * @date    May 21th, 2013
  * @author  Howser
@@ -388,7 +388,7 @@ function sliderFavoritosEvnt(){
 }
 
 /********************************************************************
- * favorChange : A–ade o Elimina a la publicaci—n de favoritos
+ * favorChange : AÃ±ade o Elimina a la publicacion de favoritos
  * 
  * @date    May 20th, 2013
  * @author  Howser
@@ -490,7 +490,7 @@ function put_catIcon(){
 
 
 /********************************************************************
- * getClient_info : carga la informaci—n del cliente
+ * getClient_info : carga la informacion del cliente
  * 
  * @date    May 17th, 2013
  * @author  Howser
@@ -500,7 +500,7 @@ function getClient_info(){
 	
     $(".listadeclientes").click(function(){
 		
-    	//Limpia informaci—n
+    	//Limpia informacion
     	cleanClient_info();
     	
     	client_logo    = "";       //Logotipo del cliente
@@ -567,7 +567,7 @@ function getClient_info(){
 
 
 /********************************************************************
- * cleanClient_info : Reemplaza la informaci—n del DOM en HTML a vacio
+ * cleanClient_info : Reemplaza la informacion del DOM en HTML a vacio
  * 
  * @date    May 17th, 2013
  * @author  Howser
@@ -581,10 +581,10 @@ function cleanClient_info(){
 	//Nombre
 	document.getElementById('replace_nombre').innerHTML = '';
 	
-	//Descripci—n
+	//Descripciï¿½n
 	document.getElementById('replace_desc').innerHTML = '';
 	
-	//Direcci—n
+	//Direcciï¿½n
 	document.getElementById('replace_direccion').innerHTML = '';
 	
 	//Telefonos
@@ -613,7 +613,7 @@ function cleanClient_info(){
 
 
 /********************************************************************
- * fillClient_info : Reemplaza la informaci—n del DOM en HTML con la nueva informaci—n del cliente
+ * fillClient_info : Reemplaza la informacion del DOM en HTML con la nueva informacion del cliente
  * 
  * @date    May 17th, 2013
  * @author  Howser
@@ -627,10 +627,10 @@ function fillClient_info(){
 	//Nombre
 	document.getElementById('replace_nombre').innerHTML = client_name;
 	
-	//Descripci—n
+	//Descripciï¿½n
 	document.getElementById('replace_desc').innerHTML = client_desc;
 	
-	//Direcci—n
+	//Direcciï¿½n
 	document.getElementById('replace_direccion').innerHTML = client_addr;
 	
 	//Telefonos
@@ -700,7 +700,6 @@ function busqueda(){
 	 
 		   					
 			p2=$("#textABuscar").val();
-   	        alert(ciudad_actual)
        	    $.ajax(
 		    	    {
 		    	        url: serverA,
