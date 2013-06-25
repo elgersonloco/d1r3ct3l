@@ -3,19 +3,21 @@
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
 
-	var serverA="http://192.168.0.182:8084/VNServicios/ServletVServicios";
+	var serverA="http://quad-tree.dyndns.org:666/VNServicios/ServletVServicios";
 
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
 	var xsize,ysize;
 	var stri="";
-	var anuncioActualId="";
 	
+	var ciudad_actual   ="";     //Id de la ciudad actual
+	var anuncioActualId ="";     //Id del Anuncio actual
 	var categoria_actual="";     //Nombre de la Categora que se va a visualizar
 	
 	//Informaci—n del Cliente
 	var client_logo = "";       //Logotipo del cliente
 	var client_name = "";       //Nombre del cliente
+	var client_desc = "";       //Descripcion corta del cliente
 	var client_addr = "";       //Direccion del cliente
 	var client_tels = "";       //Telefonos del cliente
 	var client_hours= "";       //Horario del cliente
@@ -43,49 +45,72 @@ function init(){
 
 
 function init_ok(){
-	//consulta de estados pantalla inicial  dfgdfg
+	//consulta de ciudades pantalla inicial 
 	   $.ajax(
-	    	    {
-	    	        url: serverA,
-	    	        data: {tipoServicio:p1,anyparam:p2,displaysize:""},
-	    	        success: function(response)
-	    	        {
-	    	 $('#estados_busqueda').append(response);
-	    	 $('ul').listview('refresh');
-	    	 
-	    	
-	    	        }
-	    	    });
+    	    {
+    	        url: serverA,
+    	        data: {tipoServicio:0,anyparam:p2,displaysize:""},
+    	        success: function(response)
+    	        {
+    	         
+		    	 $('#ciudades_busqueda').append(response);
+		    	 $('ul').listview('refresh');
+		    	 
+    	        }//success
+	     });//.ajax
 	
+
 	 //eventos en la page de lista de categorias
-	   $(".categoria").click(function(){
+	   $(document).on("click",".categoria",function(e){
 		   					
-		   					//Asigna el nombre de la Categoria que se va a visitar
-		   					categoria_actual=$('#'+this.id).attr("title");
-		   					put_catIcon();
-		   					
-		   					
-		    	 			p2=$('#'+this.id).attr("id");
-		    	     
-		    	        	 $.ajax(
-		    	 		    	    {
-		    	 		    	        url: serverA,
-		    	 		    	        data: {tipoServicio:"2",anyparam:p2,displaysize:""},
-		    	 		    	        success: function(response)
-		    	 		    	        {
-		    	       			 
-		    	 		    	 $('#clientes_busqueda_categoria li').remove();
-		    	 		    	 $('#clientes_busqueda_categoria').append(response);
-		    	 		    	 $('#clientes_busqueda_categoria').listview('refresh');
-		    	 		    	 //eventosDinamicosAnuncios();
-		    	 		    	 getClient_info();
-
-		    	 		    	        }
-		    	 		    	    });
-
-	  	});
+			//Asigna el nombre de la Categoria que se va a visitar
+			categoria_actual=$('#'+this.id).attr("id");
+			put_catIcon();
+			
+			p2=$('#'+this.id).attr("title");
+	 
+	    	 $.ajax(
+		    	    {
+		    	        url: serverA,
+		    	        data: {tipoServicio:"2",anyparam:p2,displaysize:"",idciudad:ciudad_actual},
+		    	        success: function(response)
+		    	        {
+		    	         
+		 		    	 $('#clientes_busqueda_categoria li').remove();
+		 		    	 $('#clientes_busqueda_categoria').append(response);
+		 		    	 $('#clientes_busqueda_categoria').listview('refresh');
+		 		    	 //eventosDinamicosAnuncios();
+		 		    	 getClient_info();
 	
-}
+		    	        }//success
+		      });//.ajax
+
+	  	});//.categoria
+	   
+	   //Seleccion de una ciudad y carga lista de categorias
+	   $(document).on("click",".ciudad",function(e){
+				
+			//Asigna el nombre de la Categoria que se va a visitar
+			ciudad_actual=$('#'+this.id).attr("id");
+	 
+	    	 $.ajax(
+		    	    {
+		    	        url: serverA,
+		    	        data: {tipoServicio:"6",anyparam:"",displaysize:""},
+		    	        success: function(response)
+		    	        {
+		    	        	
+		    	        	document.getElementById('replace_categorias').innerHTML = response;
+		    	        	
+		    	        	//$('#replace_categorias').append(response);
+		    	        	$('#replace_categorias').listview('refresh');
+		 		    	 
+		    	        }//success
+		      });//.ajax
+
+	  	});//.ciudad
+	
+}//init_ok
 
 /********************************************************************
  * version_ok : verifica la versi—n actualizada
@@ -399,51 +424,66 @@ function put_catIcon(){
 	
 	switch(categoria_actual){
 		case "apoyos_financieros":
-			  color = "#7f5e3f";
+			  //color = "#7f5e3f";
+			  color = "#805e3d";
 			  break;
 		case "automotriz":
-			  color = "#a32431";
+			  //color = "#a32431";
+			  color = "#a6262e";
 			  break;
 		case "construccion":
-			  color = "#e9ae4a";
+			  //color = "#e9ae4a";
+			  color = "#ebb042";
 			  break;
-		case "deportes":
-			  color = "#cf4239";
+		case "deporte":
+			  //color = "#cf4239";
+			  color = "#d34435";
 			  break;
 		case "educacion":
-			  color = "#ca0088";
+			  //color = "#ca0088";
+			  color = "#ce2689";
 			  break;
-		case "gobierno":
-			  color = "#7d2b8b";
+		case "gobiernos":
+			  //color = "#7d2b8b";
+			  color = "#7f278c";
 			  break;
 		case "hogar":
-			  color = "#9fc54d";
+			  //color = "#9fc54d";
+			  color = "#9ec646";
 			  break;
-		case "medios_imagen":
-			  color = "#39673e";
+		case "medios_e_imagen":
+			  //color = "#39673e";
+			  color = "#37673c";
 			  break;
-		case "negocios_industria":
-			  color = "#6e6659";
+		case "industria":
+			  //color = "#6e6659";
+			  color = "#6e6758";
 			  break;
 		case "oficinas":
-			  color = "#882461";
+			  //color = "#882461";
+			  color = "#8a2362";
 			  break;
-		case "profesionistas_oficios":
-			  color = "#5aa69d";
+		case "profesionistas":
+			  //color = "#5aa69d";
+			  color = "#55a69d";
 			  break;
-		case "recreacion_sociales":
-			  color = "#cc2229";
+		case "recreacion_y_eventos_sociales":
+			  //color = "#cc2229";
+			  color = "#cf2624";
 			  break;
-		case "salud":
-			  color = "#00acec";
-			  break;
-			  
+		case "salud_y_belleza":
+			  //color = "#00acec";
+			  color = "#00aaee";
+			  break;	  
 		case "servicios_generales":
-			  color = "#f2ca3c";
+			  //color = "#f2ca3c";
+			  color = "#f4cc2c";
 			  break;
 	}//switch
 	
 	document.getElementById('header_categoria').style.backgroundColor = color; 
+	//document.getElementById('cat_name').style.backgroundColor = color; 
+	//document.getElementById('cat_icon').style.backgroundColor = color; 
 	
 	
 }//function put_catIcon
@@ -465,6 +505,7 @@ function getClient_info(){
     	
     	client_logo    = "";       //Logotipo del cliente
     	client_name    = "";       //Nombre del cliente
+    	client_desc    = "";       //Descripcion corta del cliente
     	client_addr    = "";       //Direccion del cliente
     	client_tels    = "";       //Telefonos del cliente
     	client_hours   = "";       //Horario del cliente
@@ -496,14 +537,15 @@ function getClient_info(){
 		    	 var data=response.split("|");
 		    	 //if(data.lenght>=7){
 		    		 client_logo 	= data[0];
-		    		 client_name 	= data[1];    
-		    		 client_addr 	= data[2];      
-		    		 client_tels 	= data[3];      
-		    		 client_hours	= data[4];       
-		    		 client_email	= data[5];       
-		    		 client_web  	= data[6];   
-		    		 client_map  	= data[7];
-		    		 client_map_ext = data[8];
+		    		 client_name 	= data[1];   
+		    		 client_desc 	= data[2]; 
+		    		 client_addr 	= data[3];      
+		    		 client_tels 	= data[4];      
+		    		 client_hours	= data[5];       
+		    		 client_email	= data[6];       
+		    		 client_web  	= data[7];   
+		    		 client_map  	= data[8];
+		    		 client_map_ext = data[9];
 		    		 
 		    	 //}//if
 		    		 
@@ -539,6 +581,9 @@ function cleanClient_info(){
 	//Nombre
 	document.getElementById('replace_nombre').innerHTML = '';
 	
+	//Descripci—n
+	document.getElementById('replace_desc').innerHTML = '';
+	
 	//Direcci—n
 	document.getElementById('replace_direccion').innerHTML = '';
 	
@@ -562,6 +607,7 @@ function cleanClient_info(){
 	
 	//Marcado como favorito
 	document.getElementById("check_fav").checked = false;
+
 }//cleanClient_info
 
 
@@ -580,6 +626,9 @@ function fillClient_info(){
 	
 	//Nombre
 	document.getElementById('replace_nombre').innerHTML = client_name;
+	
+	//Descripci—n
+	document.getElementById('replace_desc').innerHTML = client_desc;
 	
 	//Direcci—n
 	document.getElementById('replace_direccion').innerHTML = client_addr;
@@ -651,25 +700,21 @@ function busqueda(){
 	 
 		   					
 			p2=$("#textABuscar").val();
-   	     
-       	 $.ajax(
+   	        alert(ciudad_actual)
+       	    $.ajax(
 		    	    {
 		    	        url: serverA,
-		    	        data: {tipoServicio:"5",anyparam:p2,displaysize:""},
+		    	        data: {tipoServicio:"5",anyparam:p2,displaysize:"",idciudad:ciudad_actual},
 		    	        success: function(response)
 		    	        {
-      			 
-		    	 $('#clientes_busqueda li').remove();
-		    	 $('#clientes_busqueda').append(response);
-		    	 $('#clientes_busqueda').listview('refresh');
-		    	 getClient_info();
+					    	 $('#clientes_busqueda li').remove();
+					    	 $('#clientes_busqueda').append(response);
+					    	 $('#clientes_busqueda').listview('refresh');
+					    	 getClient_info();
+		    	        }//success
+		    	    });//.ajax
 
-		    	        }
-		    	    });
-
-	  	
-	
-}
+}//busqueda
 
 
 function initialize() {

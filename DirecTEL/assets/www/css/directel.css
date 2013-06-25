@@ -23,25 +23,61 @@
    HEADER
  =====================================================================*/
 /*Header de la app*/
+.ui-header{
+	
+}
 .header_{
 	position:relative;
 	width:100%;
 	heigth:100%;
+	
+	background-color:#333;
+	
+	-moz-box-shadow: 0 0 0.5em 0.5em #888;
+	-webkit-box-shadow: 0 0 0.5em 0.5em #888;
+	box-shadow: 0 0 0.5em 0.5em #888;
 }
 
 /*Logotipo del header de la app*/
+
+.header_ a{
+	display:block;
+	background: rgba(252,234,187,1);
+	background: -moz-linear-gradient(top, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 54%, rgba(248,181,0,1) 99%, rgba(251,223,147,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,234,187,1)), color-stop(54%, rgba(252,205,77,1)), color-stop(99%, rgba(248,181,0,1)), color-stop(100%, rgba(251,223,147,1)));
+	background: -webkit-linear-gradient(top, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 54%, rgba(248,181,0,1) 99%, rgba(251,223,147,1) 100%);
+	background: -o-linear-gradient(top, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 54%, rgba(248,181,0,1) 99%, rgba(251,223,147,1) 100%);
+	background: -ms-linear-gradient(top, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 54%, rgba(248,181,0,1) 99%, rgba(251,223,147,1) 100%);
+	background: linear-gradient(to bottom, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 54%, rgba(248,181,0,1) 99%, rgba(251,223,147,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93', GradientType=0 );
+	
+	
+	
+	-webkit-border-radius:4.0em 4.0em;
+	-moz-border-radius:4.0em 4.0em;
+	border-radius:4.0em 4.0em;
+	
+	margin:0.5em;
+	margin-left:3em;
+	padding:0;
+	padding-top:0.5em;
+	padding-bottom:0.5em;
+	
+	width:40%;
+}
+
 .header_logo{
 	display:block;
 	position:relative;
 	left:5%;
 	bottom:0;
-	width:50%;
-	
+	width:95%;
 	
 	opacity:1;
 	-webkit-transition:all 0.8s ease;
 	-moz-transition:all 0.8s ease;
 	transition:all 0.8s ease;
+	
 }
 
 /*Icono de Configuraci—n de la app*/
@@ -61,7 +97,7 @@
 }
 
 /*Logotipo del header de la app al pasar el puntero sobre Žl*/
-.header_logo:active, .header_config:active{
+.headerd_logo:active, .header_config:active{
 	opacity:1;
 	-webkit-transform: scale(1.05,1.00);
 	-moz-transform: scale(1.05,1.00);
@@ -261,6 +297,9 @@
  	margin:1em;
  	margin-top:0;
  }
+ 
+ /*Descripci—n*/
+ .desc_{text-indent:2em;}
  
  /*Titulos h1,h2 y h3 de nombre_dir*/
  .nombre_dir h1 , .nombre_dir h2 , .nombre_dir h3{

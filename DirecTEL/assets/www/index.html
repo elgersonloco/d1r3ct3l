@@ -7,18 +7,18 @@
 	<!-- ================ METATAGS =================== -->
     <meta charset="UTF-8"/>   
     <meta name="viewport"    content="width=device-width, initial-scale=1"> 
-    <meta name="description" content="Página de Quad-Tree, Quad-Tree Web Page" /> 
-    <meta name="author"      content="Quad-Tree S.A. de C.V." />            
-    <meta name="keywords"    content="Quad-Tree,Directel,Negocio,San luis Potosì" />                    
-    <meta name="revised"     content="Howser, 08/05/2013" />                   
-    <meta name="copyright"   content="Quad-Tree S.A. de C.V."/> 
+    <meta name="description" content="Voronoi mobile project" /> 
+    <meta name="author"      content="Voronoi S.A. de C.V." />            
+    <meta name="keywords"    content="Voronoi,Directel,Negocio,San luis Potosì" />                    
+    <meta name="revised"     content="Howser,julion, 25/06/2013" />                   
+    <meta name="copyright"   content="Voronoi S.A. de C.V."/> 
     <meta name="robots"      content="noindex,nofollow" />  
          
     
     <meta name="application-name"    content="Directel"/>                            
-    <meta http-equiv="Cache-Control" content="no-cache"/>                
+    <!-- <meta http-equiv="Cache-Control" content="no-cache"/>                
     <meta http-equiv="Pragma"  content="no-cache"/>           
-    <meta http-equiv="Expires" content="-1" />               
+    <meta http-equiv="Expires" content="-1" />-->   
     
     
     <!-- ================ FAVICON ==================== -->
@@ -48,7 +48,7 @@
 	
 </head> 
 
-<body  onload="init();">
+<body onload="init();">
 
 	
 
@@ -59,7 +59,7 @@
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content" class="init_content" >
 			<img src="css/images/logo_directel_init.png"/>
-		    <ul id="estados_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
+		    <ul id="ciudades_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="selecciona tu ciudad..." data-inset="true">
 		    </ul>
 		</div><!-- /content -->
 		
@@ -74,9 +74,9 @@
 	<!-- Lista de Categorías  page -->
 	<div data-role="page"  id="lista_categorias" data-theme="d">
 		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
 		</header><!-- /header -->
 		
 		<!--  =============== MENU =================== -->
@@ -94,8 +94,330 @@
 	
 		<!-- ================ CONTENT ================= -->
 		<div data-role="content">
-			<ul data-role="listview" data-inset="true" class="lista_categorias_">
-				<li><a href="#categoria" id="autos" title="automotriz" class="categoria">
+			<ul id="replace_categorias" data-role="listview" data-inset="true" class="lista_categorias_">
+			
+				
+		    </ul>
+		</div>
+		<!-- /content -->
+		<!-- ================ FOOTER ================= -->
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#lista_categorias">Categorias</a></li>
+					<li><a href="#favoritos">Favoritos</a></li>
+					<li><a href="#busquedas">Busquedas</a></li>
+				</ul>
+		</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div>
+	<!-- /page -->
+	
+	
+	<!-- ================ PÁGINA FAVORITOS ================= -->
+	<!-- Favoritos -->
+	<div data-role="page" id="favoritos" data-theme="d">
+		<!-- ================ HEADER ================= -->
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
+		</header><!-- /header -->
+		
+		<!--  =============== MENU =================== -->
+		<nav data-role="navbar" class="menu_">
+				<ul>
+					<li><a href="#lista_categorias">
+						<img src="img/category.png"/></a></li>
+					<li><a href="#favoritos" onclick="cargaFavoritos();">
+						<img src="img/favorite.png"/></a></li>
+					<li><a href="#busquedas">
+						<img src="img/search.png"/></a></li>
+				</ul>
+		</nav><!-- /navbar -->
+
+		<!-- ================ CONTENT ================= -->
+		<div data-role="content">
+			<h1>Favoritos</h1>
+			 <ul id="favoritos_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="busca Favorito..." data-inset="true">
+		    </ul>
+		</div>
+		<!-- /content -->
+	
+	</div>
+	<!-- /page -->
+	
+	
+
+	
+	<!-- ================ PÁGINA BUSQUEDA ================= -->
+	<!-- Start of Busqueda -->
+	<div data-role="page" id="busquedas">
+		<!-- ================ HEADER ================= -->
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
+		</header><!-- /header -->
+		
+		<!--  =============== MENU =================== -->
+		<nav data-role="navbar" class="menu_">
+				<ul>
+					<li><a href="#lista_categorias">
+						<img src="img/category.png"/></a></li>
+					<li><a href="#favoritos" onclick="cargaFavoritos();">
+						<img src="img/favorite.png"/></a></li>
+					<li><a href="#busquedas">
+						<img src="img/search.png"/></a></li>
+				</ul>
+		</nav><!-- /navbar -->
+	
+		<!-- ================ CONTENT ================= -->
+		<div data-role="content">
+        <div data-role="fieldcontain">
+            <input name="" id="textABuscar" placeholder="" value="" type="text">
+        </div>
+        
+        <a data-role="button" href="javascript:busqueda()">
+            Buscar
+        </a>
+        
+        
+          <ul id="clientes_busqueda" data-role="listview"  data-inset="true">
+		  </ul>
+        
+    	</div>
+		<!-- /content -->
+	
+	</div>
+	<!-- /page -->
+	
+	
+	
+	
+
+	
+	
+	<!-- ================ PÁGINA CATEGORÍA ================= -->
+	<!-- Categoria  -->
+	<div data-role="page" id="categoria">
+		<!-- ================ HEADER ================= -->
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
+		</header><!-- /header -->
+		
+		<!-- ============ HEADER CATEGORÍA =========== -->
+		<div id="header_categoria" class="header_categoria">
+			<img id="cat_icon" />
+			<img id="cat_name" />
+		</div>
+        
+        <!-- ================ CONTENT ================= -->
+        <div data-role="content">
+          <ul id="clientes_busqueda_categoria" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="escribe para buscar..." data-inset="true">
+		  </ul>
+        </div>
+	</div><!-- /page -->
+	<!-- /Categoria  -->
+	
+
+    <!-- PÁGINA DE COMO SE VA A VER EL CLIENTE -->
+	<!-- ================ PÁGINA CLIENTE ================= -->
+	<div data-role="page" id="cliente">
+		<!-- ================ HEADER ================= -->
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
+		</header><!-- /header -->
+	      
+	    <!-- ================ CONTENT ================= -->
+	    
+	    <div data-role="content" class="client_content">
+	    	<div class="logo_cliente">
+	    		<a><img id="replace_logo" src="" onerror="this.src='css/images/logo_directel.png'"></a>
+			</div>
+			
+			<div class="nombre_dir">
+				<h2 id="replace_nombre"></h2>
+				<p id="replace_desc" class='desc_'></p>
+				<h3>Dirección</h3>
+				<p id="replace_direccion"></p>
+				
+				<!-- Redes sociales -
+				<div class="client_social">
+					<img src="img/facebook.png"/>
+					<img src="img/twitter.png" />
+				</div>-->
+				
+		       	 			
+	      		</div><!-- /fav -->
+	      		<div class="client_fav">
+		      		<div class="check_fav">
+						<input type="checkbox" id="check_fav" onchange="favorChange(this)"/>
+						<label for="check_fav"></label>
+					</div>
+	      		</div>
+
+			</div>
+			
+			<div class="contact_info">
+				<div id="replace_tels">
+					<!--<div class="telefonos_">
+						<img src="img/phone.png"/>
+						<h3 class="contact_tag">Tels</h3>
+						<div class="telefonos_list"></div>
+					</div>-->
+				</div>
+				<div id="replace_horario">
+					<div class="horario_">
+						<img src="img/clock.png"/>
+						<h3 class="contact_tag">Horario</h3>
+						<div class="horario_list"></div>
+					</div>
+				</div>
+				  
+				<!-- Formato 'a' para lista de webs 
+				<div class="webs_">
+					<img src="img/website.png">
+					<h3 class="contact_tag">Websites</h3>
+					<div id="Wreplace_web" class="webs_list">
+						<div class="web_a">
+								<img src="img/website.png"/>
+								<a class='link'>www.web.com</a>
+						</div>
+					</div>
+				</div>-->
+				
+				<!-- Formato 'b' para lista de webs -->
+				<div id="replace_web">
+						<div class="web_b">
+								<img src="img/website.png"/>
+								<h3 class="contact_tag">Web</h3>
+								<div class="web_list_b"><a>www.web.com</a></div>
+						</div>
+				</div>
+				
+				<div id="replace_email">
+					<div class="email_">
+						<img src="img/email.png"/>
+						<h3 class="contact_tag">Email</h3>
+						<div class="email_list"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="replace_map">
+				<div class="map_">
+					<img src="img/mapota.png"/>
+				</div>
+			</div>
+			
+	    </div>
+	</div><!-- /page -->
+	<!--  Cliente  -->
+
+
+    <!-- MAPA MÁS GRANDE -->
+	<!-- ================ PÁGINA MAPA ================= -->
+	<div data-role="page" id="map_ext">
+		<!-- ================ HEADER ================= -->
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
+		</header><!-- /header -->
+	    
+	    <!-- ================ CONTENT ================= -->
+        <div data-role="content" class="content_map">
+        	<div id="replace_map_ext" class="map_ext">
+				<img src="img/mapota.png"/>
+			</div>
+        </div>
+    
+   
+
+	<!-- ================ PÁGINA CLIENTE JULION ================= -->
+	<div data-role="page" id="cliente_">
+		<!-- ================ HEADER ================= -->
+		<header data-role="header" class="header_" >
+			<img class="header_logo"   src="css/images/logo_directel.png">
+			<img class="header_config" src="css/images/config.png"/>
+		
+		<!--  
+		<div  data-role="header">
+	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
+	        <h3>Anuncio</h3>-->
+	        
+
+	     	<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
+	     	<!-- ching.... lo toco si quiero .l. -->
+	    	<div data-role="fieldcontain" id="favoritoSelect">
+	    		<h2>
+		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
+			                <option value="off">
+			                    No
+			                </option>
+			                <option value="on">
+			                    Si
+			                </option>
+           			 </select>
+	       	 	</h2>
+      		</div>
+	    </header><!-- /header -->
+	      
+	    <!-- ================ CONTENT ================= -->
+	    <div data-role="content">
+	    	<h1 id="imagen_logo"></h1>   
+		    <ul data-role="listview" data-split-icon="plus" data-theme="d" data-split-theme="b" data-inset="true">  <!-- data-split-icon="plus" data-theme="d" data-split-theme="b" data-inset="true" -->
+		    	<li data-role="list-divider"> Dirección:</li>
+			    <li id="cliente_direccion"></li>
+			    <li data-role="list-divider">Telefonos:</li>
+			    <li id="tels"></li>
+			    <li data-role="list-divider">Horario:</li>
+			    <li id="cliente_horario"></li>
+			    <li data-role="list-divider">Web & R. Sociales:</li>
+			    <li id="cliente_webs"> </li>
+			    <li data-role="list-divider"> Croquis:</li>
+			    <li id="geopos"></li>
+			    <li data-role="list-divider"> Descripcion:</li>
+			    <li id="cliente_descripcion"></li>
+			    <li id="descripcion"></li>
+		    </ul>
+	    </div>
+	</div>
+	<!--  Cliente  -->
+	
+	
+	
+		<!-- ================ PÁGINA MAPA DINAMICO ================= -->
+	<div data-role="page" id="mapa">
+		<!-- ================ HEADER ================= -->
+		<header class="header_" >
+			<a href='#principal' class='logo_container'><img class="header_logo" src="css/images/logo_directel.png" /></a>
+			<!-- <img class="header_config" src="css/images/config.png"/>-->
+		</header><!-- /header -->
+		<div  data-role="header">
+	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
+	        <h3>Anuncio</h3>-->
+	        
+	    </header><!-- /header -->
+	      
+	    <!-- ================ CONTENT ================= -->
+	    <div data-role="content">
+	   <h3>Soy el  mapa </h3>
+	      <div data-role="content" id="map_canvas">
+	    </div>
+	    <h3>Era el mapa </h3>
+	
+	</div>
+	 
+	   
+	   
+	    </div>
+	</div>
+	<!--  MAPA  -->
+	
+	
+	<!-- CATEGORIAS ESTATICAS 
+	<li><a href="#categoria" id="autos" title="automotriz" class="categoria">
 			        <img src="img/cat/logo_automotriz.png">
 			        <h2>Automotríz</h2>
 			        <p>Accesorios, Grúas, Talleres .....</p></a>
@@ -178,320 +500,7 @@
 			        <h2>Medios e Imagen</h2>
 			        <p>Imprentas, Radio, Publicidad.....</p></a>
 			    </li>
-		    </ul>
-		</div>
-		<!-- /content -->
-		<!-- ================ FOOTER ================= -->
-		<div data-role="footer">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#lista_categorias">Categorias</a></li>
-					<li><a href="#favoritos">Favoritos</a></li>
-					<li><a href="#busquedas">Busquedas</a></li>
-				</ul>
-		</div><!-- /navbar -->
-		</div><!-- /footer -->
-	</div>
-	<!-- /page -->
-	
-	
-	<!-- ================ PÁGINA FAVORITOS ================= -->
-	<!-- Favoritos -->
-	<div data-role="page" id="favoritos" data-theme="d">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-		</header><!-- /header -->
-		
-		<!--  =============== MENU =================== -->
-		<nav data-role="navbar" class="menu_">
-				<ul>
-					<li><a href="#lista_categorias">
-						<img src="img/category.png"/></a></li>
-					<li><a href="#favoritos" onclick="cargaFavoritos();">
-						<img src="img/favorite.png"/></a></li>
-					<li><a href="#busquedas">
-						<img src="img/search.png"/></a></li>
-				</ul>
-		</nav><!-- /navbar -->
-
-		<!-- ================ CONTENT ================= -->
-		<div data-role="content">
-			<h1>Favoritos</h1>
-			 <ul id="favoritos_busqueda" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="busca Favorito..." data-inset="true">
-		    </ul>
-		</div>
-		<!-- /content -->
-	
-	</div>
-	<!-- /page -->
-	
-	
-
-	
-	<!-- ================ PÁGINA BUSQUEDA ================= -->
-	<!-- Start of Busqueda -->
-	<div data-role="page" id="busquedas">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-		</header><!-- /header -->
-		
-		<!--  =============== MENU =================== -->
-		<nav data-role="navbar" class="menu_">
-				<ul>
-					<li><a href="#lista_categorias">
-						<img src="img/category.png"/></a></li>
-					<li><a href="#favoritos" onclick="cargaFavoritos();">
-						<img src="img/favorite.png"/></a></li>
-					<li><a href="#busquedas">
-						<img src="img/search.png"/></a></li>
-				</ul>
-		</nav><!-- /navbar -->
-	
-		<!-- ================ CONTENT ================= -->
-		<div data-role="content">
-        <div data-role="fieldcontain">
-            <input name="" id="textABuscar" placeholder="" value="" type="text">
-        </div>
-        
-        <a data-role="button" href="javascript:busqueda()">
-            Buscar
-        </a>
-        
-        
-          <ul id="clientes_busqueda" data-role="listview"  data-inset="true">
-		  </ul>
-        
-    	</div>
-		<!-- /content -->
-	
-	</div>
-	<!-- /page -->
-	
-	
-	
-	
-
-	
-	
-	<!-- ================ PÁGINA CATEGORÍA ================= -->
-	<!-- Categoria  -->
-	<div data-role="page" id="categoria">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-		</header><!-- /header -->
-		
-		<!-- ============ HEADER CATEGORÍA =========== -->
-		<div id="header_categoria" class="header_categoria">
-			<img id="cat_icon" />
-			<img id="cat_name" />
-		</div>
-        
-        <!-- ================ CONTENT ================= -->
-        <div data-role="content">
-          <ul id="clientes_busqueda_categoria" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="escribe para buscar..." data-inset="true">
-		  </ul>
-        </div>
-	</div><!-- /page -->
-	<!-- /Categoria  -->
-	
-
-    <!-- PÁGINA DE COMO SE VA A VER EL CLIENTE -->
-	<!-- ================ PÁGINA CLIENTE ================= -->
-	<div data-role="page" id="cliente">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-		
-	    </header><!-- /header -->
-	      
-	    <!-- ================ CONTENT ================= -->
-	    
-	    <div data-role="content" class="client_content">
-	    	<div class="logo_cliente">
-	    		<a><img id="replace_logo" src=""></a>
-			</div>
-			
-			<div class="nombre_dir">
-				<h2 id="replace_nombre"></h2>
-				<h3>Dirección</h3>
-				<p id="replace_direccion"></p>
-				
-				<!-- Redes sociales -
-				<div class="client_social">
-					<img src="img/facebook.png"/>
-					<img src="img/twitter.png" />
-				</div>-->
-				
-		       	 			
-	      		</div><!-- /fav -->
-	      		<div class="client_fav">
-		      		<div class="check_fav">
-						<input type="checkbox" id="check_fav" onchange="favorChange(this)"/>
-						<label for="check_fav"></label>
-					</div>
-	      		</div>
-
-			</div>
-			
-			<div class="contact_info">
-				<div id="replace_tels">
-					<!--<div class="telefonos_">
-						<img src="img/phone.png">
-						<h3 class="contact_tag">Tels</h3>
-						<div class="telefonos_list"></div>
-					</div>-->
-				</div>
-				<div class="horario_">
-					<img src="img/clock.png">
-					<h3 class="contact_tag">Horario</h3>
-					<div id="replace_horario" class="horario_list"></div>
-				</div>
-				  
-				<!-- Formato 'a' para lista de webs 
-				<div class="webs_">
-					<img src="img/website.png">
-					<h3 class="contact_tag">Websites</h3>
-					<div id="Wreplace_web" class="webs_list">
-						<div class="web_a">
-								<img src="img/website.png">
-								<a class='link'>www.web.com</a>
-						</div>
-					</div>
-				</div>-->
-				
-				<!-- Formato 'b' para lista de webs -->
-				<div id="replace_web">
-						<div class="web_b">
-								<img src="img/website.png">
-								<h3 class="contact_tag">Web</h3>
-								<div class="web_list_b"><a>www.web.com</a></div>
-						</div>
-				</div>
-				
-				
-				<div class="email_">
-					<img src="img/email.png">
-					<h3 class="contact_tag">Email</h3>
-					<div id="replace_email" class="email_list"></div>
-				</div>
-			</div>
-			
-			<div id="replace_map" class="map_">
-				<img src="img/mapota.png"/>
-			</div>
-			
-	    </div>
-	</div><!-- /page -->
-	<!--  Cliente  -->
-
-
-    <!-- MAPA MÁS GRANDE -->
-	<!-- ================ PÁGINA MAPA ================= -->
-	<div data-role="page" id="map_ext">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-	    </header><!-- /header -->
-	    
-	    <!-- ================ CONTENT ================= -->
-        <div data-role="content" class="content_map">
-        	<div id="replace_map_ext" class="map_ext">
-				<img src="img/mapota.png"/>
-			</div>
-        </div>
-    
-   
-
-	<!-- ================ PÁGINA CLIENTE JULION ================= -->
-	<div data-role="page" id="cliente_">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-		
-		<!--  
-		<div  data-role="header">
-	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
-	        <h3>Anuncio</h3>-->
-	        
-
-	     	<!-- temporal aki pero ira en la vista anuncio no lo toques howser .i. --> 
-	     	<!-- ching.... lo toco si quiero .l. -->
-	    	<div data-role="fieldcontain" id="favoritoSelect">
-	    		<h2>
-		            <select name="ToggleFavorito" id="toggleFavorito" data-theme="" data-role="slider">
-			                <option value="off">
-			                    No
-			                </option>
-			                <option value="on">
-			                    Si
-			                </option>
-           			 </select>
-	       	 	</h2>
-      		</div>
-	    </header><!-- /header -->
-	      
-	    <!-- ================ CONTENT ================= -->
-	    <div data-role="content">
-	    	<h1 id="imagen_logo"></h1>   
-		    <ul data-role="listview" data-split-icon="plus" data-theme="d" data-split-theme="b" data-inset="true">  <!-- data-split-icon="plus" data-theme="d" data-split-theme="b" data-inset="true" -->
-		    	<li data-role="list-divider"> Dirección:</li>
-			    <li id="cliente_direccion"></li>
-			    <li data-role="list-divider">Telefonos:</li>
-			    <li id="tels"></li>
-			    <li data-role="list-divider">Horario:</li>
-			    <li id="cliente_horario"></li>
-			    <li data-role="list-divider">Web & R. Sociales:</li>
-			    <li id="cliente_webs"> </li>
-			    <li data-role="list-divider"> Croquis:</li>
-			    <li id="geopos"></li>
-			    <li data-role="list-divider"> Descripcion:</li>
-			    <li id="cliente_descripcion"></li>
-			    <li id="descripcion"></li>
-		    </ul>
-	    </div>
-	</div>
-	<!--  Cliente  -->
-	
-	
-	
-		<!-- ================ PÁGINA MAPA DINAMICO ================= -->
-	<div data-role="page" id="mapa">
-		<!-- ================ HEADER ================= -->
-		<header data-role="header" class="header_" >
-			<img class="header_logo"   src="css/images/logo_directel.png">
-			<img class="header_config" src="css/images/config.png"/>
-		
-		<!--  
-		<div  data-role="header">
-	        <a data-role="button" href="#" data-icon="grid" data-iconpos="left" class="ui-btn-left"></a>
-	        <h3>Anuncio</h3>-->
-	        
-	    </header><!-- /header -->
-	      
-	    <!-- ================ CONTENT ================= -->
-	    <div data-role="content">
-	   <h3>Soy el  mapa </h3>
-	      <div data-role="content" id="map_canvas">
-	    </div>
-	    <h3>Era el mapa </h3>
-	
-	</div>
-	 
-	   
-	   
-	    </div>
-	</div>
-	<!--  MAPA  -->
-	
+	-->
 
 </body>
 </html>
