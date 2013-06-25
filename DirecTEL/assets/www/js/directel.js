@@ -3,7 +3,7 @@
  */
 //var serverA="http://54.244.124.64:8080/VNServicios/ServletVServicios";
 
-	var serverA="http://192.168.1.70:8084/VNServicios/ServletVServicios";
+	var serverA="http://quad-tree.dyndns.org:666/VNServicios/ServletVServicios";
 
 	var p1="1"; //  tipo servicio  ['1'=get lis de estados | '2'=get lis de anuncios regex]
 	var p2="parametro2";
@@ -424,47 +424,60 @@ function put_catIcon(){
 	
 	switch(categoria_actual){
 		case "apoyos_financieros":
-			  color = "#7f5e3f";
+			  //color = "#7f5e3f";
+			  color = "#6c4c2f";
 			  break;
 		case "automotriz":
-			  color = "#a32431";
+			  //color = "#a32431";
+			  color = "#931623";
 			  break;
 		case "construccion":
-			  color = "#e9ae4a";
+			  //color = "#e9ae4a";
+			  color = "#e5a134";
 			  break;
 		case "deporte":
-			  color = "#cf4239";
+			  //color = "#cf4239";
+			  color = "#c62f29";
 			  break;
 		case "educacion":
-			  color = "#ca0088";
+			  //color = "#ca0088";
+			  color = "#c00076";
 			  break;
 		case "gobiernos":
-			  color = "#7d2b8b";
+			  //color = "#7d2b8b";
+			  color = "#6a1279";
 			  break;
 		case "hogar":
-			  color = "#9fc54d";
+			  //color = "#9fc54d";
+			  color = "#8ebe37";
 			  break;
 		case "medios_e_imagen":
-			  color = "#39673e";
+			  //color = "#39673e";
+			  color = "#2b562e";
 			  break;
 		case "industria":
-			  color = "#6e6659";
+			  //color = "#6e6659";
+			  color = "#5b5446";
 			  break;
 		case "oficinas":
-			  color = "#882461";
+			  //color = "#882461";
+			  color = "#76124f";
 			  break;
 		case "profesionistas":
-			  color = "#5aa69d";
+			  //color = "#5aa69d";
+			  color = "#46978b";
 			  break;
 		case "recreacion_y_eventos_sociales":
-			  color = "#cc2229";
+			  //color = "#cc2229";
+			  color = "#c2111c";
 			  break;
 		case "salud_y_belleza":
-			  color = "#00acec";
-			  break;
-			  
+			  //color = "#00acec";
+			  color = "#0098e9";
+			  break;	  
 		case "servicios_generales":
-			  color = "#f2ca3c";
+			  //color = "#f2ca3c";
+			  color = "#f0c323";
 			  break;
 	}//switch
 	
